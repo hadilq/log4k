@@ -1,9 +1,9 @@
 package com.log4k.sample
 
 import android.app.Application
-import com.log4k.DefaultAppender
+import com.log4k.android.DefaultAppender
 import com.log4k.Level
-import com.log4k.Log4k
+import com.log4k.android.Log4k
 import com.log4k.android.AndroidAppender
 import java.io.File
 import java.io.PrintWriter

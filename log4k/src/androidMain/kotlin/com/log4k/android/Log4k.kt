@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.log4k
+package com.log4k.android
 
+import com.log4k.Appender
+import com.log4k.Event
+import com.log4k.Level
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.regex.Pattern

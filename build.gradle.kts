@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Hadi Lashkari Ghouchani
+ * Copyright 2019 Hadi Lashkari Ghouchani
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,8 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.log4k
+buildscript {
+    val versionKotlin: String by project
+    val versionAndroidBuildTools: String by project
 
-import java.lang.Error
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:$versionAndroidBuildTools")
+        classpath(kotlin("gradle-plugin", version = versionKotlin))
+    }
+}
 
-class AssertionError(message: String, cause: Throwable? = null) : Error(message, cause)
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
+    }
+}

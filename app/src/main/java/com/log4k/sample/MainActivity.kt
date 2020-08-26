@@ -1,8 +1,8 @@
 package com.log4k.sample
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.log4k.d
+import androidx.appcompat.app.AppCompatActivity
+import com.log4k.android.d
 
 class MainActivity : AppCompatActivity() {
 
