@@ -1,5 +1,5 @@
  ![Health Check](https://github.com/hadilq/log4k/workflows/Health%20Check/badge.svg?branch=master)
- [ ![Download](https://api.bintray.com/packages/hadilq/Sheypoor/log4k/images/download.svg) ](https://bintray.com/hadilq/Sheypoor/log4k/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.hadilq/log4k/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.hadilq/log4k)
 
 Log4k
 ---
@@ -33,12 +33,21 @@ services for another review of the method in the future.
 
 Installation
 ---
-Download it in gradle for your Android app like this
+Since version 2.0.0 this library is a Kotlin Multiplatform library, so depend on what kind of module you use it in, you can use different artifact IDs. Download it in gradle for your Android app like this
 ```groovy
-implementation "com.log4k:log4k:${log4kVersion}"
-implementation "com.log4k:log4k-android:${log4kVersion}"
+implementation "com.github.hadilq:log4k-android:${log4kVersion}"
 ```
-For the recent version, check out the Bintray badges on top of this README file.
+For the recent version, check out the Maven Central badges on top of this README file. Use
+```groovy
+implementation "com.github.hadilq:log4k-jvm:${log4kVersion}"
+```
+in Jvm modules and applications. And finally, use
+
+```groovy
+implementation "com.github.hadilq:log4k-metadata:${log4kVersion}"
+```
+in common modules of Kotlin Multiplatform modules and applications.
+
 
 Then in the `onCreate` method of your `Application` class setup it like this
 ```kotlin
