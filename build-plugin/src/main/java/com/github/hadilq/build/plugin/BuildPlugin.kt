@@ -32,7 +32,7 @@ private const val VERSION_MOCKITO = "1.4.0"
 const val VERSION_JACOCO = "0.8.5"
 
 const val GROUP_ID = "com.github.hadilq"
-const val LIB_VERSION = "0.4.2"
+const val LIB_VERSION = "2.0.0"
 
 const val VERSION_COMPILE_SDK = 29
 const val VERSION_MIN_SDK = 15
