@@ -185,7 +185,9 @@ class LoggerTest {
     @Test
     fun testFalseAssumeEmptyCollection() {
         assumeEmpty("test", listOf("skfjnv"))
-        assertTrue(out.toString().startsWith("A/LoggerTest: test\ncom.log4k.AssertionError: test"))
+        val message = out.toString()
+        println(message)
+        assertTrue(message.startsWith("A/LoggerTest: test\ncom.log4k.AssertionError: test"))
     }
 
     @Test
@@ -197,7 +199,9 @@ class LoggerTest {
     @Test
     fun testFalseAssumeNotEmptyNull() {
         assumeNotEmpty("test", null as String?)
-        assertTrue(out.toString().startsWith("A/LoggerTest: test\ncom.log4k.AssertionError: test"))
+        val message = out.toString()
+        println(message)
+        assertTrue(message.startsWith("A/LoggerTest: test\ncom.log4k.AssertionError: test"))
     }
 
     @Test
