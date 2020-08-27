@@ -21,4 +21,4 @@ jobs:
       - name: Download Dependencies
         run: ./gradlew androidDependencies
       - name: Run all checks
-        run:  ./gradlew check --stacktrace
+        run:  ./gradlew check

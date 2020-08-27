@@ -1,6 +1,5 @@
- ![Build Status](https://github.com/hadilq/log4k/workflows/.github/workflows/check.yml/badge.svg?branch=master)
+ ![Health Check](https://github.com/hadilq/log4k/workflows/Health%20Check/badge.svg?branch=master)
  [ ![Download](https://api.bintray.com/packages/hadilq/Sheypoor/log4k/images/download.svg) ](https://bintray.com/hadilq/Sheypoor/log4k/_latestVersion)
- [ ![Download](https://api.bintray.com/packages/hadilq/Sheypoor/log4k-android/images/download.svg) ](https://bintray.com/hadilq/Sheypoor/log4k-android/_latestVersion)
 
 Log4k
 ---
