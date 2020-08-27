@@ -4,7 +4,7 @@
 
 Log4k
 ---
-This is a simple library for logging in Kotlin. It's inspired by the famous Apache Log4j library.
+This is a simple library for logging in Kotlin. It's inspired by the famous Apache Log4j library. You can find the original repository that I pushed this library at https://github.com/sheypoor/log4k.
 
 Usage
 ---
