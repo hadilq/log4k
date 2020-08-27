@@ -41,7 +41,7 @@ For the recent version, check out the Maven Central badges on top of this README
 ```groovy
 implementation "com.github.hadilq:log4k-jvm:${log4kVersion}"
 ```
-in Jvm modules and applications. And finally, use
+in JVM modules and applications. And finally, use
 
 ```groovy
 implementation "com.github.hadilq:log4k-metadata:${log4kVersion}"
@@ -59,7 +59,7 @@ if (BuildConfig.DEBUG) {
     Log4k.add(Level.Assert, "com\\.log4k\\.sample\\..+", DefaultAppender(writer = PrintWriter(File(filesDir, "log.txt"))))
 }
 ```
-As you can see, you can any kind of appender to handle different kinds of logs. For instance, the `AndroidAppender`
+As you can see, you can use any kind of appender to handle different kinds of logs. For instance, the `AndroidAppender`
 appender log as an ordinary Android `Log`. Or the `DefaultAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt")))`
 appender log into a file in external cache directory.
 
