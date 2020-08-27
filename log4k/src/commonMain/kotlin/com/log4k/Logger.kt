@@ -234,7 +234,7 @@ inline fun <reified T> T.assumeNotSame(
     noinline callback: (() -> Unit)? = null
 ) = LoggerBuilder.create(tagName()).assumeNotSame(message, expected, actual, callback)
 
-inline fun <reified T> T.tagName(): String = T::class.simpleName ?: let {
+inline fun <reified T> T.tagName(): String = T::class.qualifiedName ?: let {
     Log4kTmp.log(
         Level.Error,
         "Log4k",
