@@ -35,7 +35,7 @@ class LoggerBuilder private constructor(
      * Log an assertion with a [message].
      */
     private fun fail(message: String) =
-        Log4k.log(Level.Assert, clazz, SimpleThrowableEvent(message, AssertionError(message)))
+        Log4kTmp.log(Level.Assert, clazz, SimpleThrowableEvent(message, AssertionError(message)))
 
     /**
      * Log an assertion with a [message] if [condition] is false, else try the next assumption or run the [callback].

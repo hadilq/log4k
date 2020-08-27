@@ -68,19 +68,6 @@ kotlin {
       }
     }
 
-    val androidMain by getting {
-      dependencies {
-        implementation(kotlin(KOTLIN_STDLIB))
-      }
-    }
-
-    val androidTest by getting {
-      dependencies {
-        implementation(JUNIT)
-        implementation(MOCKITO)
-      }
-    }
-
     val jvmMain by getting {
       dependencies {
         implementation(kotlin(KOTLIN_STDLIB))
@@ -90,6 +77,20 @@ kotlin {
     val jvmTest by getting {
       dependencies {
         implementation(JUNIT)
+      }
+    }
+
+    val androidMain by getting {
+      dependsOn(jvmMain)
+      dependencies {
+        implementation(kotlin(KOTLIN_STDLIB))
+      }
+    }
+
+    val androidTest by getting {
+      dependencies {
+        implementation(JUNIT)
+        implementation(MOCKITO)
       }
     }
   }

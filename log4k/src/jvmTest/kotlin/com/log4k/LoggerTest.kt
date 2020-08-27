@@ -35,12 +35,12 @@ class LoggerTest {
     fun setup() {
         out = StringWriter()
         appender = TestAppender(out)
-        Log4k.add(Level.Verbose, ".*", appender)
+        Log4kTmp.add(Level.Verbose, ".*", appender)
     }
 
     @After
     fun remove() {
-        Log4k.remove(appender)
+        Log4kTmp.remove(appender)
         appender.close()
     }
 

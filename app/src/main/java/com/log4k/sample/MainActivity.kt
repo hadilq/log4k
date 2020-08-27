@@ -2,7 +2,7 @@ package com.log4k.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.log4k.android.d
+import com.log4k.d
 
 class MainActivity : AppCompatActivity() {
 

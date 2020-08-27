@@ -57,7 +57,7 @@ open class DefaultAppender(
      * A lambda function to generate a string to show class name of the log
      */
     private val generateClassName: (String) -> String = {
-        "${it.substring(it.lastIndexOf('.') + 1)}: "
+        it.substringAfter('.')
     }
 ) : Appender({ level, clazz, event ->
     when (event) {
