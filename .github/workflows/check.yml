@@ -1,0 +1,21 @@
+name: Health Check
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+jobs:
+  check:
+    uses: actions/checkout@v2
+    name: Run tests and checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Dependencies
+        run: ./gradlew androidDependencies
+      - name: Run all checks
+        run:  ./gradlew check
