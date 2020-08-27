@@ -11,10 +11,10 @@ on:
         description: 'Test scenario tags'
 jobs:
   check:
-    uses: actions/checkout@v2
     name: Run tests and checks
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Download Dependencies
         run: ./gradlew androidDependencies
       - name: Run all checks
