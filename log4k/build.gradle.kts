@@ -52,6 +52,17 @@ kotlin {
       }
     }
   }
+  iosArm32()
+  iosArm64()
+  iosX64()
+  watchosArm32()
+  watchosArm64()
+  watchosX86()
+  tvosArm64()
+  tvosX64()
+  macosX64()
+  linuxArm64()
+  linuxX64()
 
   sourceSets {
     commonMain {
@@ -62,7 +73,6 @@ kotlin {
     commonTest {
       dependencies {
         implementation(kotlin(KOTLIN_TEST_ANNOTATIONS_COMMON))
-        implementation(MOCKK_COMMON)
       }
     }
 
@@ -75,7 +85,6 @@ kotlin {
       dependencies {
         implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
         implementation(JUNIT)
-        implementation(MOCKK)
       }
     }
 
@@ -89,8 +98,6 @@ kotlin {
       dependencies {
         implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
         implementation(JUNIT)
-        implementation(MOCKK)
-        implementation(MOCKK_ANDROID)
       }
     }
   }

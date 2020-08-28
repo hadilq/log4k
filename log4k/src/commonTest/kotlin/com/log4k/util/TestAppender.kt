@@ -3,7 +3,6 @@ package com.log4k.util
 import com.log4k.Appender
 import com.log4k.Event
 import com.log4k.Level
-import io.mockk.mockk
 
 class TestAppender(
   val box: Box = Box(),
@@ -17,8 +16,8 @@ class TestAppender(
 )
 
 data class Box(
-  var level: Level = mockk(),
-  var clazz: String = "",
-  var event: Event = mockk(),
+  var level: Level? = null,
+  var clazz: String? = null,
+  var event: Event? = null,
   var logged: Boolean = false,
 )

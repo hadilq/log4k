@@ -1,5 +1,8 @@
 package com.log4k
 
+import kotlin.native.concurrent.ThreadLocal
+
+@ThreadLocal
 object Log4k : Log4kI by logger
 
 private val logger = Log4kImpl()
