@@ -42,9 +42,7 @@ android {
 }
 
 kotlin {
-  android {
-    publishLibraryVariants = listOf("release")
-  }
+  android()
   jvm {
     compilations.all {
       kotlinOptions {
