@@ -23,109 +23,109 @@ import com.log4k.Level.*
  * Send a [Verbose] log [message].
  */
 inline fun <reified T> T.v(message: String) =
-    Log4kTmp.log(Level.Verbose, tagName(), SimpleEvent(message))
+    Log4k.log(Verbose, tagName(), SimpleEvent(message))
 
 /**
  * Send a [Debug] log [message].
  */
 inline fun <reified T> T.d(message: String) =
-    Log4kTmp.log(Level.Debug, tagName(), SimpleEvent(message))
+    Log4k.log(Debug, tagName(), SimpleEvent(message))
 
 /**
  * Send an [Info] log [message].
  */
 inline fun <reified T> T.i(message: String) =
-    Log4kTmp.log(Level.Info, tagName(), SimpleEvent(message))
+    Log4k.log(Info, tagName(), SimpleEvent(message))
 
 /**
  * Send a [Warn] log [message].
  */
 inline fun <reified T> T.w(message: String) =
-    Log4kTmp.log(Level.Warn, tagName(), SimpleEvent(message))
+    Log4k.log(Warn, tagName(), SimpleEvent(message))
 
 /**
  * Send an [Error] log [message].
  */
 inline fun <reified T> T.e(message: String) =
-    Log4kTmp.log(Level.Error, tagName(), SimpleEvent(message))
+    Log4k.log(Error, tagName(), SimpleEvent(message))
 
 /**
  * Send an [Assert] log [message].
  */
 inline fun <reified T> T.a(message: String) =
-    Log4kTmp.log(Level.Assert, tagName(), SimpleEvent(message))
+    Log4k.log(Assert, tagName(), SimpleEvent(message))
 
 /**
  * Send a [Verbose] log [message] and [throwable].
  */
 inline fun <reified T> T.v(message: String, throwable: Throwable) =
-    Log4kTmp.log(Level.Verbose, tagName(), SimpleThrowableEvent(message, throwable))
+    Log4k.log(Verbose, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send a [Debug] log [message] and [throwable].
  */
 inline fun <reified T> T.d(message: String, throwable: Throwable) =
-    Log4kTmp.log(Level.Debug, tagName(), SimpleThrowableEvent(message, throwable))
+    Log4k.log(Debug, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send an [Info] log [message] and [throwable].
  */
 inline fun <reified T> T.i(message: String, throwable: Throwable) =
-    Log4kTmp.log(Level.Info, tagName(), SimpleThrowableEvent(message, throwable))
+    Log4k.log(Info, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send a [Warn] log [message] and [throwable].
  */
 inline fun <reified T> T.w(message: String, throwable: Throwable) =
-    Log4kTmp.log(Level.Warn, tagName(), SimpleThrowableEvent(message, throwable))
+    Log4k.log(Warn, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send an [Error] log [message] and [throwable].
  */
 inline fun <reified T> T.e(message: String, throwable: Throwable) =
-    Log4kTmp.log(Level.Error, tagName(), SimpleThrowableEvent(message, throwable))
+    Log4k.log(Error, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send an [Assert] log [message] and [throwable].
  */
 inline fun <reified T> T.a(message: String, throwable: Throwable) =
-    Log4kTmp.log(Level.Assert, tagName(), SimpleThrowableEvent(message, throwable))
+    Log4k.log(Assert, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send a [Verbose] log [event].
  */
 inline fun <reified T> T.v(event: Event) =
-    Log4kTmp.log(Level.Verbose, tagName(), event)
+    Log4k.log(Verbose, tagName(), event)
 
 /**
  * Send a [Debug] log [event].
  */
 inline fun <reified T> T.d(event: Event) =
-    Log4kTmp.log(Level.Debug, tagName(), event)
+    Log4k.log(Debug, tagName(), event)
 
 /**
  * Send an [Info] log [event].
  */
 inline fun <reified T> T.i(event: Event) =
-    Log4kTmp.log(Level.Info, tagName(), event)
+    Log4k.log(Info, tagName(), event)
 
 /**
  * Send a [Warn] log [event].
  */
 inline fun <reified T> T.w(event: Event) =
-    Log4kTmp.log(Level.Warn, tagName(), event)
+    Log4k.log(Warn, tagName(), event)
 
 /**
  * Send an [Error] log [event].
  */
 inline fun <reified T> T.e(event: Event) =
-    Log4kTmp.log(Level.Error, tagName(), event)
+    Log4k.log(Error, tagName(), event)
 
 /**
  * Send an [Assert] log [event].
  */
 inline fun <reified T> T.a(event: Event) =
-    Log4kTmp.log(Level.Assert, tagName(), event)
+    Log4k.log(Assert, tagName(), event)
 
 /**
  * Log an assertion with a [message].
@@ -235,8 +235,8 @@ inline fun <reified T> T.assumeNotSame(
 ) = LoggerBuilder.create(tagName()).assumeNotSame(message, expected, actual, callback)
 
 inline fun <reified T> T.tagName(): String = T::class.qualifiedName ?: let {
-    Log4kTmp.log(
-        Level.Error,
+    Log4k.log(
+        Error,
         "Log4k",
         SimpleThrowableEvent("Anonymous class", RuntimeException("Try to log on anonymous class!"))
     )

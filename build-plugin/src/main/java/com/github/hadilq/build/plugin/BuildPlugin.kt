@@ -28,6 +28,7 @@ private const val VERSION_CONSTRAINT_LAYOUT = "2.0.0"
 
 private const val VERSION_JUNIT = "4.12"
 private const val VERSION_MOCKITO = "1.4.0"
+private const val VERSION_MOCKK = "1.10.0"
 
 const val VERSION_JACOCO = "0.8.5"
 
@@ -38,13 +39,13 @@ const val VERSION_COMPILE_SDK = 29
 const val VERSION_MIN_SDK = 15
 const val VERSION_TARGET_SDK = 29
 
-const val KOTLIN_STDLIB = "stdlib"
-const val KOTLIN_STDLIB_COMMON = "stdlib-common"
-const val KOTLIN_TEST_COMMON = "test-common"
+const val KOTLIN_TEST_ANNOTATIONS = "test-junit"
 const val KOTLIN_TEST_ANNOTATIONS_COMMON = "test-annotations-common"
 const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:$VERSION_ANDROIDX_APPCOMPAT"
 const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:$VERSION_CONSTRAINT_LAYOUT"
 
 const val JUNIT = "junit:junit:$VERSION_JUNIT"
 const val MOCKITO = "com.nhaarman:mockito-kotlin:$VERSION_MOCKITO"
-const val MOCKK_COMMON = "io.mockk:mockk-common:1.10.0"
+const val MOCKK = "io.mockk:mockk:$VERSION_MOCKK"
+const val MOCKK_COMMON = "io.mockk:mockk-common:$VERSION_MOCKK"
+const val MOCKK_ANDROID = "io.mockk:mockk-android:$VERSION_MOCKK"

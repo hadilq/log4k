@@ -22,7 +22,7 @@ import java.util.*
 /**
  * A simple and default appender.
  */
-open class DefaultAppender(
+open class JVMAppender(
 
     /**
      * Print writer to handle the output of this appender.

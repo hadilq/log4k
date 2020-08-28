@@ -56,13 +56,11 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        implementation(kotlin(KOTLIN_STDLIB_COMMON))
       }
     }
 
     commonTest {
       dependencies {
-        implementation(kotlin(KOTLIN_TEST_COMMON))
         implementation(kotlin(KOTLIN_TEST_ANNOTATIONS_COMMON))
         implementation(MOCKK_COMMON)
       }
@@ -70,27 +68,29 @@ kotlin {
 
     val jvmMain by getting {
       dependencies {
-        implementation(kotlin(KOTLIN_STDLIB))
       }
     }
 
     val jvmTest by getting {
       dependencies {
+        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
         implementation(JUNIT)
+        implementation(MOCKK)
       }
     }
 
     val androidMain by getting {
       dependsOn(jvmMain)
       dependencies {
-        implementation(kotlin(KOTLIN_STDLIB))
       }
     }
 
     val androidTest by getting {
       dependencies {
+        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
         implementation(JUNIT)
-        implementation(MOCKITO)
+        implementation(MOCKK)
+        implementation(MOCKK_ANDROID)
       }
     }
   }

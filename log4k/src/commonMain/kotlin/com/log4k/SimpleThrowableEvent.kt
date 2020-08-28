@@ -18,7 +18,7 @@ package com.log4k
 /**
  * A simple event with [message] and [throwable]
  */
-class SimpleThrowableEvent(
+data class SimpleThrowableEvent(
     val message: String,
     val throwable: Throwable
 ) : Event

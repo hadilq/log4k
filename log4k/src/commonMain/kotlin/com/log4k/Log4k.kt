@@ -1,6 +1,6 @@
 package com.log4k
 
-object Log4kTmp : Log4kI by logger
+object Log4k : Log4kI by logger
 
 private val logger = Log4kImpl()
 

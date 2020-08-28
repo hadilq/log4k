@@ -24,5 +24,5 @@ open class Appender(
      * A lambda function to handle the log. The first param is the log level, the second param is the full name of the
      * class that this log came from, and the third param is the event that we want to log.
      */
-    val logger: (Level, String, event: Event) -> Unit
+    val logger: (level: Level, clazz: String, event: Event) -> Unit
 )

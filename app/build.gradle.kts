@@ -38,7 +38,6 @@ dependencies {
     implementation(project(":log4k"))
 //    implementation("$GROUP_ID:log4k-android:${LIB_VERSION}")
 
-    implementation(kotlin(KOTLIN_STDLIB))
     implementation(ANDROIDX_APPCOMPAT)
     implementation(CONSTRAINT_LAYOUT)
 }

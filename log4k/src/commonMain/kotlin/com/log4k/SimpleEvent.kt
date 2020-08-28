@@ -18,6 +18,6 @@ package com.log4k
 /**
  * A simple event with a [message].
  */
-class SimpleEvent(
+data class SimpleEvent(
     val message: String
 ) : Event

@@ -15,4 +15,7 @@
  */
 package com.log4k
 
-class AssertionError(message: String, cause: Throwable? = null) : Error(message, cause)
+class AssertionError(
+  override val message: String,
+  override val cause: Throwable? = null
+) : Error(message, cause)
