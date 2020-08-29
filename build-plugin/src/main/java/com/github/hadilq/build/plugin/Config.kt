@@ -66,10 +66,6 @@ fun Project.setupJacoco() {
 
 fun Project.setupPublication() {
   plugins.apply("org.jetbrains.dokka")
-
-  if (!hasProperty("signing.keyId")) {
-    return
-  }
   plugins.apply("maven-publish")
   plugins.apply(SigningPlugin::class.java)
 
