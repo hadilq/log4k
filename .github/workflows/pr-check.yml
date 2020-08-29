@@ -1,4 +1,4 @@
-name: Health Check
+name: PR Health Check
 on:
   push:
     branches:
