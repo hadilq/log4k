@@ -31,6 +31,9 @@ android {
     targetSdkVersion(VERSION_TARGET_SDK)
     minSdkVersion(VERSION_MIN_SDK)
   }
+  val main by sourceSets.getting {
+    manifest.srcFile("src/androidMain/AndroidManifest.xml")
+  }
 
   buildTypes {
     getByName("release") {
