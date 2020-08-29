@@ -1,6 +1,14 @@
 Changelog
 =========
 
+2.1.0
+-----
+
+_2020-08-29_
+
+ - Add tests for common source set
+ - Add ios, watchos, tvos, macosX64, linuxArm64, linuxX64 platforms
+
 2.0.0
 -----
 
