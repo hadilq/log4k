@@ -20,6 +20,9 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '8'
+      - uses: actions/cache@v2
+          with:
+            path: ~/.gradle
       - name: Download Dependencies
         run: ./gradlew androidDependencies
       - name: Run all checks
