@@ -23,6 +23,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.gradle
+          key: ${{ runner.os }}
       - name: Download Dependencies
         run: ./gradlew androidDependencies
       - name: Run all checks
