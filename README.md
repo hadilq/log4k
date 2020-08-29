@@ -46,7 +46,11 @@ in JVM modules and applications. And finally, use
 ```groovy
 implementation "com.github.hadilq:log4k-metadata:${log4kVersion}"
 ```
-in common modules of Kotlin Multiplatform modules and applications.
+in common modules of Kotlin Multiplatform modules and applications. In case of native module, for instance use
+```groovy
+implementation "com.github.hadilq:log4k-iosArm64:${log4kVersion}"
+```
+But be aware that here we annotated `object Log4k` with `kotlin.native.concurrent.ThreadLocal`, so you may need to apply the next step cofiguration on each thread that you want your logs not be ignored!
 
 Snapshots of the development version are available in [Sonatype's snapshots repository](https://oss.sonatype.org/content/repositories/snapshots).
 
