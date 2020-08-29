@@ -17,7 +17,6 @@ package com.github.hadilq.build.plugin
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import java.util.*
 
 class BuildPlugin : Plugin<Project> {
 
@@ -25,6 +24,8 @@ class BuildPlugin : Plugin<Project> {
 }
 
 const val SNAPSHOT = "-SNAPSHOT"
+
+fun isSnapshot(version: String): Boolean = version.endsWith(SNAPSHOT)
 
 private const val VERSION_ANDROIDX_APPCOMPAT = "1.2.0"
 private const val VERSION_CONSTRAINT_LAYOUT = "2.0.0"

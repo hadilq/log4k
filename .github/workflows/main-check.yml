@@ -1,6 +1,8 @@
 name: Health Check
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,3 +24,8 @@ jobs:
         run: ./gradlew androidDependencies
       - name: Run all checks
         run:  ./gradlew check
+      - name: Publish SNAPSHOT
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        run:  ./gradlew :log4k:publish

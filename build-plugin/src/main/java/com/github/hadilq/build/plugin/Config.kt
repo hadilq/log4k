@@ -82,6 +82,11 @@ fun Project.setupPublication() {
   val githubUrl = "https://github.com/hadilq/log4k"
   val githubScmUrl = "scm:git@github.com:hadilq/log4k.git"
 
+  val ossrhUsername: String? = System.getenv()["OSSRH_USERNAME"]
+    ?: findProperty("ossrhUsername") as String?
+  val ossrhPassword: String? = System.getenv()["OSSRH_PASSWORD"]
+    ?: findProperty("ossrhPassword") as String?
+
   val javadocJar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP
     archiveClassifier.value("javadoc")
@@ -90,7 +95,9 @@ fun Project.setupPublication() {
 
   extensions.getByType<PublishingExtension>().run {
     publications.withType<MavenPublication>().all {
-      signing.sign(this)
+      if (!isSnapshot(version)) {
+        signing.sign(this)
+      }
       artifact(javadocJar)
       pom {
         withXml {
@@ -122,18 +129,17 @@ fun Project.setupPublication() {
           developerConnection.set(githubScmUrl)
         }
       }
-
     }
 
     repositories {
       maven {
-        url = if ("$version".endsWith(SNAPSHOT))
+        url = if (isSnapshot("$version"))
           uri("https://oss.sonatype.org/content/repositories/snapshots/")
         else
           uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
         credentials {
-          username = findProperty("ossrhUsername")?.toString()
-          password = findProperty("ossrhPassword")?.toString()
+          username = ossrhUsername
+          password = ossrhPassword
         }
       }
     }
