@@ -48,6 +48,7 @@ implementation "com.github.hadilq:log4k-metadata:${log4kVersion}"
 ```
 in common modules of Kotlin Multiplatform modules and applications.
 
+Snapshots of the development version are available in [Sonatype's snapshots repository](https://oss.sonatype.org/content/repositories/snapshots).
 
 Then in the `onCreate` method of your `Application` class setup it like this
 ```kotlin

@@ -127,7 +127,7 @@ fun Project.setupPublication() {
 
     repositories {
       maven {
-        url = if ("$version".endsWith("-SNAPSHOT"))
+        url = if ("$version".endsWith(SNAPSHOT))
           uri("https://oss.sonatype.org/content/repositories/snapshots/")
         else
           uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")

@@ -21,6 +21,9 @@ plugins {
   id("com.github.hadilq.build-plugin")
 }
 
+setupJacoco()
+setupPublication()
+
 android {
   compileSdkVersion(VERSION_COMPILE_SDK)
 
@@ -42,7 +45,9 @@ android {
 }
 
 kotlin {
-  android()
+  android{
+    publishAllLibraryVariants()
+  }
   jvm {
     compilations.all {
       kotlinOptions {
@@ -50,14 +55,9 @@ kotlin {
       }
     }
   }
-  iosArm32()
-  iosArm64()
-  iosX64()
-  watchosArm32()
-  watchosArm64()
-  watchosX86()
-  tvosArm64()
-  tvosX64()
+  ios()
+  watchos()
+  tvos()
   macosX64()
   linuxArm64()
   linuxX64()
@@ -109,6 +109,3 @@ kotlin {
 tasks.withType<GenerateModuleMetadata> {
   enabled = false
 }
-
-setupJacoco()
-setupPublication()

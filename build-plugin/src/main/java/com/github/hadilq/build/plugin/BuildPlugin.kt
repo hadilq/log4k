@@ -17,11 +17,14 @@ package com.github.hadilq.build.plugin
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import java.util.*
 
 class BuildPlugin : Plugin<Project> {
 
   override fun apply(target: Project) = target.setup()
 }
+
+const val SNAPSHOT = "-SNAPSHOT"
 
 private const val VERSION_ANDROIDX_APPCOMPAT = "1.2.0"
 private const val VERSION_CONSTRAINT_LAYOUT = "2.0.0"
@@ -31,7 +34,7 @@ private const val VERSION_JUNIT = "4.12"
 const val VERSION_JACOCO = "0.8.5"
 
 const val GROUP_ID = "com.github.hadilq"
-const val LIB_VERSION = "2.1.0"
+const val LIB_VERSION = "2.1.0$SNAPSHOT"
 
 const val VERSION_COMPILE_SDK = 29
 const val VERSION_MIN_SDK = 15
