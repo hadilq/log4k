@@ -93,8 +93,16 @@ fun Project.setupPublication() {
     from(tasks.getByName("dokkaJavadoc"))
   }
 
+  val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.value("sources")
+  }
+
   extensions.getByType<PublishingExtension>().run {
+    publications {
+      withType<MavenPublication>()["kotlinMultiplatform"].artifact(sourcesJar)
+    }
     publications.withType<MavenPublication>().all {
+
       if (!isSnapshot(version)) {
         signing.sign(this)
       }

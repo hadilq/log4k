@@ -28,4 +28,4 @@ jobs:
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        run:  ./gradlew :log4k:publish
+        run:  ./gradlew :log4k:tasks :log4k:publish
