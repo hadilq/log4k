@@ -97,12 +97,3 @@ kotlin {
     }
   }
 }
-
-/**
- * To make android library be available for all variants.
- *
- * see https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html#sub:disabling-gmm-publication
- */
-tasks.withType<GenerateModuleMetadata> {
-  enabled = false
-}
