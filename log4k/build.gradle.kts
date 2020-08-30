@@ -35,12 +35,6 @@ android {
     manifest.srcFile("src/androidMain/AndroidManifest.xml")
   }
 
-  buildTypes {
-    getByName("release") {
-      isMinifyEnabled = false
-    }
-  }
-
   compileOptions {
     sourceCompatibility(JavaVersion.VERSION_1_8)
     targetCompatibility(JavaVersion.VERSION_1_8)
@@ -49,7 +43,7 @@ android {
 
 kotlin {
   android{
-    publishLibraryVariants = listOf("release")
+    publishAllLibraryVariants()
   }
   jvm {
     compilations.all {
