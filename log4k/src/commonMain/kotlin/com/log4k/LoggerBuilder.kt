@@ -21,21 +21,25 @@ import com.log4k.Level.Assert
  * A logger to handle the chain of assumptions. You have to notice that a failed assumption is logging on [Assert] level.
  */
 class LoggerBuilder private constructor(
-    private val clazz: String
+    private val clazz: String,
+    private val log4k: Log4kI
 ) {
     companion object {
 
         /**
-         * The creator method of this class.
+         * The factory method of this class.
          */
-        fun create(clazz: String) = LoggerBuilder(clazz)
+        fun create(
+            clazz: String,
+            log4k: Log4kI
+        ) = LoggerBuilder(clazz, log4k)
     }
 
     /**
      * Log an assertion with a [message].
      */
-    private fun fail(message: String) =
-        Log4k.log(Level.Assert, clazz, SimpleThrowableEvent(message, AssertionError(message)))
+    private fun fail(message: String, log4k: Log4kI = Log4k) =
+        log4k.log(Assert, clazz, SimpleThrowableEvent(message, AssertionError(message)))
 
     /**
      * Log an assertion with a [message] if [condition] is false, else try the next assumption or run the [callback].
@@ -49,7 +53,7 @@ class LoggerBuilder private constructor(
             callback?.let { it() }
             this
         } else {
-            fail(message)
+            fail(message, log4k)
             null
         }
 
