@@ -42,7 +42,7 @@ android {
 }
 
 kotlin {
-  android{
+  android {
     publishAllLibraryVariants()
   }
   jvm {

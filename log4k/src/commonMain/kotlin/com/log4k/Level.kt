@@ -21,35 +21,35 @@ package com.log4k
  */
 abstract class Level(val level: Float) {
 
-    /**
-     * The [Verbose] Level designates finer-grained informational events than the [Debug] level.
-     */
-    object Verbose : Level(0F)
+  /**
+   * The [Verbose] Level designates finer-grained informational events than the [Debug] level.
+   */
+  object Verbose : Level(0F)
 
-    /**
-     * The [Debug] Level designates fine-grained informational events that are most useful to debug an application.
-     */
-    object Debug : Level(1F)
+  /**
+   * The [Debug] Level designates fine-grained informational events that are most useful to debug an application.
+   */
+  object Debug : Level(1F)
 
-    /**
-     * The [Info] level designates informational messages that highlight the progress of the application at
-     * coarse-grained level.
-     */
-    object Info : Level(2F)
+  /**
+   * The [Info] level designates informational messages that highlight the progress of the application at
+   * coarse-grained level.
+   */
+  object Info : Level(2F)
 
-    /**
-     * The [Warn] level designates potentially harmful situations.
-     */
-    object Warn : Level(3F)
+  /**
+   * The [Warn] level designates potentially harmful situations.
+   */
+  object Warn : Level(3F)
 
-    /**
-     * The [Error] level designates error events that might still allow the application to continue running.
-     */
-    object Error : Level(4F)
+  /**
+   * The [Error] level designates error events that might still allow the application to continue running.
+   */
+  object Error : Level(4F)
 
-    /**
-     * The [Assert] level designates very severe error events that will presumably lead the application to abort or
-     * breaking of any of your code assumptions.
-     */
-    object Assert : Level(5F)
+  /**
+   * The [Assert] level designates very severe error events that will presumably lead the application to abort or
+   * breaking of any of your code assumptions.
+   */
+  object Assert : Level(5F)
 }

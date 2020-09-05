@@ -44,6 +44,7 @@ const val VERSION_TARGET_SDK = 29
 const val KOTLIN_TEST_ANNOTATIONS = "test-junit"
 const val KOTLIN_TEST_ANNOTATIONS_COMMON = "test-annotations-common"
 const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:$VERSION_ANDROIDX_APPCOMPAT"
-const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:$VERSION_CONSTRAINT_LAYOUT"
+const val CONSTRAINT_LAYOUT =
+  "androidx.constraintlayout:constraintlayout:$VERSION_CONSTRAINT_LAYOUT"
 
 const val JUNIT = "junit:junit:$VERSION_JUNIT"

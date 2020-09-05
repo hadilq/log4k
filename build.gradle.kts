@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 buildscript {
-    val versionKotlin: String by project
-    val versionAndroidBuildTools: String by project
+  val versionKotlin: String by project
+  val versionAndroidBuildTools: String by project
 
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:$versionAndroidBuildTools")
-        classpath(kotlin("gradle-plugin", version = versionKotlin))
-    }
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath("com.android.tools.build:gradle:$versionAndroidBuildTools")
+    classpath(kotlin("gradle-plugin", version = versionKotlin))
+  }
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
-    }
+  repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
+  }
 }

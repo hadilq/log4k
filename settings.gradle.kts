@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        jcenter()
-        maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
-    }
+  repositories {
+    gradlePluginPortal()
+    jcenter()
+    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
+  }
 }
 rootProject.name = "log4k"
 

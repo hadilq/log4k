@@ -23,37 +23,37 @@ import com.log4k.Level.*
  * Send a [Verbose] log [message].
  */
 inline fun <reified T> T.v(message: String, log4k: Log4kI = Log4k) =
-    log4k.log(Verbose, tagName(), SimpleEvent(message))
+  log4k.log(Verbose, tagName(), SimpleEvent(message))
 
 /**
  * Send a [Debug] log [message].
  */
 inline fun <reified T> T.d(message: String, log4k: Log4kI = Log4k) =
-    log4k.log(Debug, tagName(), SimpleEvent(message))
+  log4k.log(Debug, tagName(), SimpleEvent(message))
 
 /**
  * Send an [Info] log [message].
  */
 inline fun <reified T> T.i(message: String, log4k: Log4kI = Log4k) =
-    log4k.log(Info, tagName(), SimpleEvent(message))
+  log4k.log(Info, tagName(), SimpleEvent(message))
 
 /**
  * Send a [Warn] log [message].
  */
 inline fun <reified T> T.w(message: String, log4k: Log4kI = Log4k) =
-    log4k.log(Warn, tagName(), SimpleEvent(message))
+  log4k.log(Warn, tagName(), SimpleEvent(message))
 
 /**
  * Send an [Error] log [message].
  */
 inline fun <reified T> T.e(message: String, log4k: Log4kI = Log4k) =
-    log4k.log(Error, tagName(), SimpleEvent(message))
+  log4k.log(Error, tagName(), SimpleEvent(message))
 
 /**
  * Send an [Assert] log [message].
  */
 inline fun <reified T> T.a(message: String, log4k: Log4kI = Log4k) =
-    log4k.log(Assert, tagName(), SimpleEvent(message))
+  log4k.log(Assert, tagName(), SimpleEvent(message))
 
 /**
  * Send a [Verbose] log [String].
@@ -63,7 +63,7 @@ inline fun <reified T> T.a(message: String, log4k: Log4kI = Log4k) =
  * ```
  */
 inline fun <reified T> String.v(log4k: Log4kI = Log4k): T.() -> Unit = {
-    v(this@v, log4k)
+  v(this@v, log4k)
 }
 
 /**
@@ -75,7 +75,7 @@ inline fun <reified T> String.v(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> String.d(log4k: Log4kI = Log4k): T.() -> Unit = {
-    d(this@d, log4k)
+  d(this@d, log4k)
 }
 
 /**
@@ -87,7 +87,7 @@ inline fun <reified T> String.d(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> String.i(log4k: Log4kI = Log4k): T.() -> Unit = {
-    i(this@i, log4k)
+  i(this@i, log4k)
 }
 
 /**
@@ -99,7 +99,7 @@ inline fun <reified T> String.i(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> String.w(log4k: Log4kI = Log4k): T.() -> Unit = {
-    w(this@w, log4k)
+  w(this@w, log4k)
 }
 
 /**
@@ -111,7 +111,7 @@ inline fun <reified T> String.w(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> String.e(log4k: Log4kI = Log4k): T.() -> Unit = {
-    e(this@e, log4k)
+  e(this@e, log4k)
 }
 
 /**
@@ -123,44 +123,44 @@ inline fun <reified T> String.e(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> String.a(log4k: Log4kI = Log4k): T.() -> Unit = {
-    a(this@a, log4k)
+  a(this@a, log4k)
 }
 
 /**
  * Send a [Verbose] log [message] and [throwable].
  */
 inline fun <reified T> T.v(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    log4k.log(Verbose, tagName(), SimpleThrowableEvent(message, throwable))
+  log4k.log(Verbose, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send a [Debug] log [message] and [throwable].
  */
 inline fun <reified T> T.d(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    log4k.log(Debug, tagName(), SimpleThrowableEvent(message, throwable))
+  log4k.log(Debug, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send an [Info] log [message] and [throwable].
  */
 inline fun <reified T> T.i(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    log4k.log(Info, tagName(), SimpleThrowableEvent(message, throwable))
+  log4k.log(Info, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send a [Warn] log [message] and [throwable].
  */
 inline fun <reified T> T.w(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    log4k.log(Warn, tagName(), SimpleThrowableEvent(message, throwable))
+  log4k.log(Warn, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send an [Error] log [message] and [throwable].
  */
 inline fun <reified T> T.e(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    log4k.log(Error, tagName(), SimpleThrowableEvent(message, throwable))
+  log4k.log(Error, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send an [Assert] log [message] and [throwable].
  */
 inline fun <reified T> T.a(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    log4k.log(Assert, tagName(), SimpleThrowableEvent(message, throwable))
+  log4k.log(Assert, tagName(), SimpleThrowableEvent(message, throwable))
 
 /**
  * Send a [Verbose] log [message] and [Throwable].
@@ -171,7 +171,7 @@ inline fun <reified T> T.a(message: String, throwable: Throwable, log4k: Log4kI 
  * ```
  */
 inline fun <reified T> Throwable.v(message: String, log4k: Log4kI = Log4k): T.() -> Unit = {
-    v(message, this@v, log4k)
+  v(message, this@v, log4k)
 }
 
 /**
@@ -183,7 +183,7 @@ inline fun <reified T> Throwable.v(message: String, log4k: Log4kI = Log4k): T.()
  * ```
  */
 inline fun <reified T> Throwable.d(message: String, log4k: Log4kI = Log4k): T.() -> Unit = {
-    d(message, this@d, log4k)
+  d(message, this@d, log4k)
 }
 
 /**
@@ -195,7 +195,7 @@ inline fun <reified T> Throwable.d(message: String, log4k: Log4kI = Log4k): T.()
  * ```
  */
 inline fun <reified T> Throwable.i(message: String, log4k: Log4kI = Log4k): T.() -> Unit = {
-    i(message, this@i, log4k)
+  i(message, this@i, log4k)
 }
 
 /**
@@ -207,7 +207,7 @@ inline fun <reified T> Throwable.i(message: String, log4k: Log4kI = Log4k): T.()
  * ```
  */
 inline fun <reified T> Throwable.w(message: String, log4k: Log4kI = Log4k): T.() -> Unit = {
-    w(message, this@w, log4k)
+  w(message, this@w, log4k)
 }
 
 /**
@@ -219,7 +219,7 @@ inline fun <reified T> Throwable.w(message: String, log4k: Log4kI = Log4k): T.()
  * ```
  */
 inline fun <reified T> Throwable.e(message: String, log4k: Log4kI = Log4k): T.() -> Unit = {
-    e(message, this@e, log4k)
+  e(message, this@e, log4k)
 }
 
 /**
@@ -231,44 +231,44 @@ inline fun <reified T> Throwable.e(message: String, log4k: Log4kI = Log4k): T.()
  * ```
  */
 inline fun <reified T> Throwable.a(message: String, log4k: Log4kI = Log4k): T.() -> Unit = {
-    a(message, this@a, log4k)
+  a(message, this@a, log4k)
 }
 
 /**
  * Send a [Verbose] log [event].
  */
 inline fun <reified T> T.v(event: Event, log4k: Log4kI = Log4k) =
-    log4k.log(Verbose, tagName(), event)
+  log4k.log(Verbose, tagName(), event)
 
 /**
  * Send a [Debug] log [event].
  */
 inline fun <reified T> T.d(event: Event, log4k: Log4kI = Log4k) =
-    log4k.log(Debug, tagName(), event)
+  log4k.log(Debug, tagName(), event)
 
 /**
  * Send an [Info] log [event].
  */
 inline fun <reified T> T.i(event: Event, log4k: Log4kI = Log4k) =
-    log4k.log(Info, tagName(), event)
+  log4k.log(Info, tagName(), event)
 
 /**
  * Send a [Warn] log [event].
  */
 inline fun <reified T> T.w(event: Event, log4k: Log4kI = Log4k) =
-    log4k.log(Warn, tagName(), event)
+  log4k.log(Warn, tagName(), event)
 
 /**
  * Send an [Error] log [event].
  */
 inline fun <reified T> T.e(event: Event, log4k: Log4kI = Log4k) =
-    log4k.log(Error, tagName(), event)
+  log4k.log(Error, tagName(), event)
 
 /**
  * Send an [Assert] log [event].
  */
 inline fun <reified T> T.a(event: Event, log4k: Log4kI = Log4k) =
-    log4k.log(Assert, tagName(), event)
+  log4k.log(Assert, tagName(), event)
 
 /**
  * Send a [Verbose] log [Event].
@@ -279,7 +279,7 @@ inline fun <reified T> T.a(event: Event, log4k: Log4kI = Log4k) =
  * ```
  */
 inline fun <reified T> Event.v(log4k: Log4kI = Log4k): T.() -> Unit = {
-    v(this@v, log4k)
+  v(this@v, log4k)
 }
 
 
@@ -292,7 +292,7 @@ inline fun <reified T> Event.v(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> Event.d(log4k: Log4kI = Log4k): T.() -> Unit = {
-    d(this@d, log4k)
+  d(this@d, log4k)
 }
 
 /**
@@ -304,7 +304,7 @@ inline fun <reified T> Event.d(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> Event.i(log4k: Log4kI = Log4k): T.() -> Unit = {
-    i(this@i, log4k)
+  i(this@i, log4k)
 }
 
 /**
@@ -316,7 +316,7 @@ inline fun <reified T> Event.i(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> Event.w(log4k: Log4kI = Log4k): T.() -> Unit = {
-    w(this@w, log4k)
+  w(this@w, log4k)
 }
 
 /**
@@ -328,7 +328,7 @@ inline fun <reified T> Event.w(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> Event.e(log4k: Log4kI = Log4k): T.() -> Unit = {
-    e(this@e, log4k)
+  e(this@e, log4k)
 }
 
 /**
@@ -340,20 +340,20 @@ inline fun <reified T> Event.e(log4k: Log4kI = Log4k): T.() -> Unit = {
  * ```
  */
 inline fun <reified T> Event.a(log4k: Log4kI = Log4k): T.() -> Unit = {
-    a(this@a, log4k)
+  a(this@a, log4k)
 }
 
 /**
  * Log an assertion with a [message].
  */
 inline fun <reified T> T.fail(message: String, log4k: Log4kI = Log4k) =
-    fail(message, AssertionError(message), log4k)
+  fail(message, AssertionError(message), log4k)
 
 /**
  * Log an assertion with a [message] and [throwable].
  */
 inline fun <reified T> T.fail(message: String, throwable: Throwable, log4k: Log4kI = Log4k) =
-    a(message, throwable, log4k)
+  a(message, throwable, log4k)
 
 /**
  * Log an assertion with a [message] if [condition] is false, else try the next assumption or run the [callback].
@@ -374,7 +374,7 @@ inline fun <reified T> T.assumeFalse(
     log4k: Log4kI = Log4k,
     noinline callback: (() -> Unit)? = null
 ) =
-    LoggerBuilder.create(tagName(), log4k).assumeFalse(message, condition, callback)
+  LoggerBuilder.create(tagName(), log4k).assumeFalse(message, condition, callback)
 
 /**
  * Log an assertion with a [message] if [condition] is not empty, else try the next assumption or run the [callback].
@@ -385,7 +385,7 @@ inline fun <reified T> T.assumeEmpty(
     log4k: Log4kI = Log4k,
     noinline callback: (() -> Unit)? = null
 ) =
-    LoggerBuilder.create(tagName(), log4k).assumeEmpty(message, condition, callback)
+  LoggerBuilder.create(tagName(), log4k).assumeEmpty(message, condition, callback)
 
 /**
  * Log an assertion with a [message] if [collection] is not empty, else try the next assumption or run the [callback].
@@ -406,7 +406,7 @@ inline fun <reified T> T.assumeNotEmpty(
     log4k: Log4kI = Log4k,
     noinline callback: (() -> Unit)? = null
 ) =
-    LoggerBuilder.create(tagName(), log4k).assumeNotEmpty(message, condition, callback)
+  LoggerBuilder.create(tagName(), log4k).assumeNotEmpty(message, condition, callback)
 
 /**
  * Log an assertion with a [message] if [collection] is empty, else try the next assumption or run the [callback].
@@ -449,7 +449,7 @@ inline fun <reified T> T.assumeNotNull(
     log4k: Log4kI = Log4k,
     noinline callback: (() -> Unit)? = null
 ) =
-    LoggerBuilder.create(tagName(), log4k).assumeNotNull(message, obj, callback)
+  LoggerBuilder.create(tagName(), log4k).assumeNotNull(message, obj, callback)
 
 /**
  * Log an assertion with a [message] if [obj] is not null, else try the next assumption or run the [callback].
@@ -460,7 +460,7 @@ inline fun <reified T> T.assumeNull(
     log4k: Log4kI = Log4k,
     noinline callback: (() -> Unit)? = null
 ) =
-    LoggerBuilder.create(tagName(), log4k).assumeNull(message, obj, callback)
+  LoggerBuilder.create(tagName(), log4k).assumeNull(message, obj, callback)
 
 /**
  * Log an assertion with a [message] if [expected] is not the same as [actual], else try the next assumption or run the [callback].
@@ -483,10 +483,10 @@ inline fun <reified T> T.assumeNotSame(
 ) = LoggerBuilder.create(tagName(), log4k).assumeNotSame(message, expected, actual, callback)
 
 inline fun <reified T> T.tagName(): String = T::class.qualifiedName ?: let {
-    Log4k.log(
-        Error,
-        "Log4k",
-        SimpleThrowableEvent("Anonymous class", RuntimeException("Try to log on anonymous class!"))
-    )
-    "Log4k"
+  Log4k.log(
+      Error,
+      "Log4k",
+      SimpleThrowableEvent("Anonymous class", RuntimeException("Try to log on anonymous class!"))
+  )
+  "Log4k"
 }

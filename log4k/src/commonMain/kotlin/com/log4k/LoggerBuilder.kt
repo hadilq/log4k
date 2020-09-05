@@ -24,127 +24,127 @@ class LoggerBuilder private constructor(
     private val clazz: String,
     private val log4k: Log4kI
 ) {
-    companion object {
+  companion object {
 
-        /**
-         * The factory method of this class.
-         */
-        fun create(
-            clazz: String,
-            log4k: Log4kI
-        ) = LoggerBuilder(clazz, log4k)
+    /**
+     * The factory method of this class.
+     */
+    fun create(
+        clazz: String,
+        log4k: Log4kI
+    ) = LoggerBuilder(clazz, log4k)
+  }
+
+  /**
+   * Log an assertion with a [message].
+   */
+  private fun fail(message: String, log4k: Log4kI = Log4k) =
+    log4k.log(Assert, clazz, SimpleThrowableEvent(message, AssertionError(message)))
+
+  /**
+   * Log an assertion with a [message] if [condition] is false, else try the next assumption or run the [callback].
+   */
+  fun assumeTrue(
+      message: String,
+      condition: Boolean,
+      callback: (() -> Unit)? = null
+  ): LoggerBuilder? =
+    if (condition) {
+      callback?.let { it() }
+      this
+    } else {
+      fail(message, log4k)
+      null
     }
 
-    /**
-     * Log an assertion with a [message].
-     */
-    private fun fail(message: String, log4k: Log4kI = Log4k) =
-        log4k.log(Assert, clazz, SimpleThrowableEvent(message, AssertionError(message)))
+  /**
+   * Log an assertion with a [message] if [condition] is true, else try the next assumption or run the [callback].
+   */
+  fun assumeFalse(message: String, condition: Boolean, callback: (() -> Unit)? = null) =
+    assumeTrue(message, !condition, callback)
 
-    /**
-     * Log an assertion with a [message] if [condition] is false, else try the next assumption or run the [callback].
-     */
-    fun assumeTrue(
-        message: String,
-        condition: Boolean,
-        callback: (() -> Unit)? = null
-    ): LoggerBuilder? =
-        if (condition) {
-            callback?.let { it() }
-            this
-        } else {
-            fail(message, log4k)
-            null
-        }
+  /**
+   * Log an assertion with a [message] if [condition] is not empty, else try the next assumption or run the [callback].
+   */
+  fun assumeEmpty(message: String, condition: String?, callback: (() -> Unit)? = null) =
+    assumeTrue(message, condition?.isEmpty() ?: true, callback)
 
-    /**
-     * Log an assertion with a [message] if [condition] is true, else try the next assumption or run the [callback].
-     */
-    fun assumeFalse(message: String, condition: Boolean, callback: (() -> Unit)? = null) =
-        assumeTrue(message, !condition, callback)
+  /**
+   * Log an assertion with a [message] if [collection] is not empty, else try the next assumption or run the [callback].
+   */
+  fun <C> assumeEmpty(
+      message: String,
+      collection: Collection<C>?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, collection?.isEmpty() ?: true, callback)
 
-    /**
-     * Log an assertion with a [message] if [condition] is not empty, else try the next assumption or run the [callback].
-     */
-    fun assumeEmpty(message: String, condition: String?, callback: (() -> Unit)? = null) =
-        assumeTrue(message, condition?.isEmpty() ?: true, callback)
+  /**
+   * Log an assertion with a [message] if [condition] is empty, else try the next assumption or run the [callback].
+   */
+  fun assumeNotEmpty(
+      message: String,
+      condition: String?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, condition?.isNotEmpty() ?: false, callback)
 
-    /**
-     * Log an assertion with a [message] if [collection] is not empty, else try the next assumption or run the [callback].
-     */
-    fun <C> assumeEmpty(
-        message: String,
-        collection: Collection<C>?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, collection?.isEmpty() ?: true, callback)
+  /**
+   * Log an assertion with a [message] if [collection] is empty, else try the next assumption or run the [callback].
+   */
+  fun <C> assumeNotEmpty(
+      message: String,
+      collection: Collection<C>?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, collection?.isNotEmpty() ?: false, callback)
 
-    /**
-     * Log an assertion with a [message] if [condition] is empty, else try the next assumption or run the [callback].
-     */
-    fun assumeNotEmpty(
-        message: String,
-        condition: String?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, condition?.isNotEmpty() ?: false, callback)
+  /**
+   * Log an assertion with a [message] if [expected] value doesn't equal to [actual] value, else try the next assumption or run the [callback].
+   */
+  fun assumeEquals(
+      message: String,
+      expected: Any?,
+      actual: Any?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, expected == actual, callback)
 
-    /**
-     * Log an assertion with a [message] if [collection] is empty, else try the next assumption or run the [callback].
-     */
-    fun <C> assumeNotEmpty(
-        message: String,
-        collection: Collection<C>?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, collection?.isNotEmpty() ?: false, callback)
+  /**
+   * Log an assertion with a [message] if [expected] value equals to [actual] value, else try the next assumption or run the [callback].
+   */
+  fun assumeNotEquals(
+      message: String,
+      expected: Any?,
+      actual: Any?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, expected != actual, callback)
 
-    /**
-     * Log an assertion with a [message] if [expected] value doesn't equal to [actual] value, else try the next assumption or run the [callback].
-     */
-    fun assumeEquals(
-        message: String,
-        expected: Any?,
-        actual: Any?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, expected == actual, callback)
+  /**
+   * Log an assertion with a [message] if [obj] is null, else try the next assumption or run the [callback].
+   */
+  fun assumeNotNull(message: String, obj: Any?, callback: (() -> Unit)? = null) =
+    assumeTrue(message, obj != null, callback)
 
-    /**
-     * Log an assertion with a [message] if [expected] value equals to [actual] value, else try the next assumption or run the [callback].
-     */
-    fun assumeNotEquals(
-        message: String,
-        expected: Any?,
-        actual: Any?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, expected != actual, callback)
+  /**
+   * Log an assertion with a [message] if [obj] is not null, else try the next assumption or run the [callback].
+   */
+  fun assumeNull(message: String, obj: Any?, callback: (() -> Unit)? = null) =
+    assumeTrue(message, obj == null, callback)
 
-    /**
-     * Log an assertion with a [message] if [obj] is null, else try the next assumption or run the [callback].
-     */
-    fun assumeNotNull(message: String, obj: Any?, callback: (() -> Unit)? = null) =
-        assumeTrue(message, obj != null, callback)
+  /**
+   * Log an assertion with a [message] if [expected] is not the same as [actual], else try the next assumption or run the [callback].
+   */
+  fun assumeSame(
+      message: String,
+      expected: Any?,
+      actual: Any?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, expected === actual, callback)
 
-    /**
-     * Log an assertion with a [message] if [obj] is not null, else try the next assumption or run the [callback].
-     */
-    fun assumeNull(message: String, obj: Any?, callback: (() -> Unit)? = null) =
-        assumeTrue(message, obj == null, callback)
-
-    /**
-     * Log an assertion with a [message] if [expected] is not the same as [actual], else try the next assumption or run the [callback].
-     */
-    fun assumeSame(
-        message: String,
-        expected: Any?,
-        actual: Any?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, expected === actual, callback)
-
-    /**
-     * Log an assertion with a [message] if [expected] is the same as [actual], else try the next assumption or run the [callback].
-     */
-    fun assumeNotSame(
-        message: String,
-        expected: Any?,
-        actual: Any?,
-        callback: (() -> Unit)? = null
-    ) = assumeTrue(message, expected !== actual, callback)
+  /**
+   * Log an assertion with a [message] if [expected] is the same as [actual], else try the next assumption or run the [callback].
+   */
+  fun assumeNotSame(
+      message: String,
+      expected: Any?,
+      actual: Any?,
+      callback: (() -> Unit)? = null
+  ) = assumeTrue(message, expected !== actual, callback)
 }

@@ -5,5 +5,5 @@ import java.io.PrintWriter
 import java.io.StringWriter
 
 class TestJVMAppender(
-    private val out: StringWriter
+  private val out: StringWriter
 ) : JVMAppender(writer = PrintWriter(out), generateTimestamp = { "" })

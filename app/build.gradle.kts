@@ -16,28 +16,28 @@
 import com.github.hadilq.build.plugin.*
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
-    kotlin("kapt")
-    id("com.github.hadilq.build-plugin")
+  id("com.android.application")
+  kotlin("android")
+  kotlin("android.extensions")
+  kotlin("kapt")
+  id("com.github.hadilq.build-plugin")
 }
 
 android {
-    compileSdkVersion(VERSION_COMPILE_SDK)
-    defaultConfig {
-        applicationId = "com.hadilq.log4k.sample"
-        minSdkVersion(VERSION_MIN_SDK)
-        targetSdkVersion(VERSION_TARGET_SDK)
-        versionCode = 1
-        versionName = "1.0"
-    }
+  compileSdkVersion(VERSION_COMPILE_SDK)
+  defaultConfig {
+    applicationId = "com.hadilq.log4k.sample"
+    minSdkVersion(VERSION_MIN_SDK)
+    targetSdkVersion(VERSION_TARGET_SDK)
+    versionCode = 1
+    versionName = "1.0"
+  }
 }
 
 dependencies {
-    implementation(project(":log4k"))
+  implementation(project(":log4k"))
 //    implementation("$GROUP_ID:log4k-android:${LIB_VERSION}")
 
-    implementation(ANDROIDX_APPCOMPAT)
-    implementation(CONSTRAINT_LAYOUT)
+  implementation(ANDROIDX_APPCOMPAT)
+  implementation(CONSTRAINT_LAYOUT)
 }

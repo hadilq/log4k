@@ -24,54 +24,54 @@ import java.util.*
  */
 open class JVMAppender(
 
-    /**
-     * Print writer to handle the output of this appender.
-     */
-    private val writer: PrintWriter = PrintWriter(System.out),
+  /**
+   * Print writer to handle the output of this appender.
+   */
+  private val writer: PrintWriter = PrintWriter(System.out),
 
-    /**
-     * A lambda function to generate a string of the timestamp of the log.
-     */
-    private val generateTimestamp: () -> String = {
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault())
-        sdf.timeZone = Calendar.getInstance().timeZone
-        "${sdf.format(Date())}/ "
-    },
+  /**
+   * A lambda function to generate a string of the timestamp of the log.
+   */
+  private val generateTimestamp: () -> String = {
+    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault())
+    sdf.timeZone = Calendar.getInstance().timeZone
+    "${sdf.format(Date())}/ "
+  },
 
-    /**
-     * A lambda function to generate a string to show level of the log.
-     */
-    private val generateLevel: (Level) -> String = {
-        when (it.level) {
-            Level.Verbose.level -> "V/"
-            Level.Debug.level -> "D/"
-            Level.Info.level -> "I/"
-            Level.Warn.level -> "W/"
-            Level.Error.level -> "E/"
-            Level.Assert.level -> "A/"
-            else -> ""
-        }
-    },
-
-    /**
-     * A lambda function to generate a string to show class name of the log
-     */
-    private val generateClassName: (String) -> String = {
-        "${it.substringAfterLast('.')}: "
+  /**
+   * A lambda function to generate a string to show level of the log.
+   */
+  private val generateLevel: (Level) -> String = {
+    when (it.level) {
+      Level.Verbose.level -> "V/"
+      Level.Debug.level -> "D/"
+      Level.Info.level -> "I/"
+      Level.Warn.level -> "W/"
+      Level.Error.level -> "E/"
+      Level.Assert.level -> "A/"
+      else -> ""
     }
+  },
+
+  /**
+   * A lambda function to generate a string to show class name of the log
+   */
+  private val generateClassName: (String) -> String = {
+    "${it.substringAfterLast('.')}: "
+  }
 ) : Appender({ level, clazz, event ->
-    when (event) {
-        is SimpleEvent -> {
-            writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(clazz)}${event.message}")
-        }
-        is SimpleThrowableEvent -> {
-            writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(clazz)}${event.message}")
-            event.throwable.printStackTrace(writer)
-        }
+  when (event) {
+    is SimpleEvent -> {
+      writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(clazz)}${event.message}")
     }
-    writer.flush()
+    is SimpleThrowableEvent -> {
+      writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(clazz)}${event.message}")
+      event.throwable.printStackTrace(writer)
+    }
+  }
+  writer.flush()
 }) {
-    open fun close() {
-        writer.close()
-    }
+  open fun close() {
+    writer.close()
+  }
 }

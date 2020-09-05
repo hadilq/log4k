@@ -28,285 +28,299 @@ import java.io.StringWriter
 @RunWith(JUnit4::class)
 class JVMAppenderTest {
 
-    private val simpleName = JVMAppenderTest::class.simpleName
-    private lateinit var out: StringWriter
-    private lateinit var appender: TestJVMAppender
+  private val simpleName = JVMAppenderTest::class.simpleName
+  private lateinit var out: StringWriter
+  private lateinit var appender: TestJVMAppender
 
-    @Before
-    fun setup() {
-        out = StringWriter()
-        appender = TestJVMAppender(out)
-        Log4k.add(Level.Verbose, ".*", appender)
-    }
+  @Before
+  fun setup() {
+    out = StringWriter()
+    appender = TestJVMAppender(out)
+    Log4k.add(Level.Verbose, ".*", appender)
+  }
 
-    @After
-    fun remove() {
-        Log4k.remove(appender)
-        appender.close()
-    }
+  @After
+  fun remove() {
+    Log4k.remove(appender)
+    appender.close()
+  }
 
-    @Test
-    fun testVerbose() {
-        v("test")
-        assertEquals("V/$simpleName: test\n", out.toString())
-    }
+  @Test
+  fun testVerbose() {
+    v("test")
+    assertEquals("V/$simpleName: test\n", out.toString())
+  }
 
-    @Test
-    fun testDebug() {
-        d("test")
-        assertEquals("D/$simpleName: test\n", out.toString())
-    }
+  @Test
+  fun testDebug() {
+    d("test")
+    assertEquals("D/$simpleName: test\n", out.toString())
+  }
 
-    @Test
-    fun testInfo() {
-        i("test")
-        assertEquals("I/$simpleName: test\n", out.toString())
-    }
+  @Test
+  fun testInfo() {
+    i("test")
+    assertEquals("I/$simpleName: test\n", out.toString())
+  }
 
-    @Test
-    fun testWarn() {
-        w("test")
-        assertEquals("W/$simpleName: test\n", out.toString())
-    }
+  @Test
+  fun testWarn() {
+    w("test")
+    assertEquals("W/$simpleName: test\n", out.toString())
+  }
 
-    @Test
-    fun testError() {
-        e("test")
-        assertEquals("E/$simpleName: test\n", out.toString())
-    }
+  @Test
+  fun testError() {
+    e("test")
+    assertEquals("E/$simpleName: test\n", out.toString())
+  }
 
-    @Test
-    fun testAssert() {
-        a("test")
-        assertEquals("A/$simpleName: test\n", out.toString())
-    }
+  @Test
+  fun testAssert() {
+    a("test")
+    assertEquals("A/$simpleName: test\n", out.toString())
+  }
 
-    @Test
-    fun testVerboseThrowable() {
-        v("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("V/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testVerboseThrowable() {
+    v("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("V/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testDebugThrowable() {
-        d("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("D/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testDebugThrowable() {
+    d("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("D/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testInfoThrowable() {
-        i("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("I/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testInfoThrowable() {
+    i("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("I/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testWarnThrowable() {
-        w("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("W/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testWarnThrowable() {
+    w("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("W/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testErrorThrowable() {
-        e("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("E/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testErrorThrowable() {
+    e("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("E/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testAssertThrowable() {
-        a("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("A/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testAssertThrowable() {
+    a("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("A/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testFail() {
-        fail("test")
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFail() {
+    fail("test")
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testFailThrowable() {
-        fail("test", RuntimeException("testing"))
-        assertTrue(out.toString().startsWith("A/$simpleName: test\njava.lang.RuntimeException: testing"))
-    }
+  @Test
+  fun testFailThrowable() {
+    fail("test", RuntimeException("testing"))
+    assertTrue(
+      out.toString().startsWith("A/$simpleName: test\njava.lang.RuntimeException: testing")
+    )
+  }
 
-    @Test
-    fun testTrueAssumeTrue() {
-        assumeTrue("test", true)
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeTrue() {
+    assumeTrue("test", true)
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeTrue() {
-        assumeTrue("test", false)
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeTrue() {
+    assumeTrue("test", false)
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeFalse() {
-        assumeFalse("test", false)
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeFalse() {
+    assumeFalse("test", false)
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeFalse() {
-        assumeFalse("test", true)
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeFalse() {
+    assumeFalse("test", true)
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeEmpty() {
-        assumeEmpty("test", "")
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeEmpty() {
+    assumeEmpty("test", "")
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testTrueAssumeEmptyNull() {
-        assumeEmpty("test", null as String?)
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeEmptyNull() {
+    assumeEmpty("test", null as String?)
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeEmpty() {
-        assumeEmpty("test", "sdfvv")
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeEmpty() {
+    assumeEmpty("test", "sdfvv")
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeEmptyCollection() {
-        assumeEmpty("test", listOf<String>())
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeEmptyCollection() {
+    assumeEmpty("test", listOf<String>())
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testTrueAssumeEmptyNullCollection() {
-        assumeEmpty("test", null as List<String>?)
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeEmptyNullCollection() {
+    assumeEmpty("test", null as List<String>?)
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeEmptyCollection() {
-        assumeEmpty("test", listOf("skfjnv"))
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeEmptyCollection() {
+    assumeEmpty("test", listOf("skfjnv"))
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeNotEmpty() {
-        assumeNotEmpty("test", "slfkdjnv")
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeNotEmpty() {
+    assumeNotEmpty("test", "slfkdjnv")
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeNotEmptyNull() {
-        assumeNotEmpty("test", null as String?)
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotEmptyNull() {
+    assumeNotEmpty("test", null as String?)
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testFalseAssumeNotEmpty() {
-        assumeNotEmpty("test", "")
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotEmpty() {
+    assumeNotEmpty("test", "")
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeNotEmptyCollection() {
-        assumeNotEmpty("test", listOf("slkdfjv"))
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeNotEmptyCollection() {
+    assumeNotEmpty("test", listOf("slkdfjv"))
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeNotEmptyNullCollection() {
-        assumeNotEmpty("test", null as List<String>?)
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotEmptyNullCollection() {
+    assumeNotEmpty("test", null as List<String>?)
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testFalseAssumeNotEmptyCollection() {
-        assumeNotEmpty("test", listOf<String>())
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotEmptyCollection() {
+    assumeNotEmpty("test", listOf<String>())
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeEquals() {
-        assumeEquals("test", "a", "a")
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeEquals() {
+    assumeEquals("test", "a", "a")
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeEquals() {
-        assumeEquals("test", "a", "b")
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeEquals() {
+    assumeEquals("test", "a", "b")
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeNotEquals() {
-        assumeNotEquals("test", "a", "b")
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeNotEquals() {
+    assumeNotEquals("test", "a", "b")
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeNotEquals() {
-        assumeNotEquals("test", "a", "a")
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotEquals() {
+    assumeNotEquals("test", "a", "a")
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeNotNull() {
-        assumeNotNull("test", "")
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeNotNull() {
+    assumeNotNull("test", "")
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeNotNull() {
-        assumeNotNull("test", null)
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotNull() {
+    assumeNotNull("test", null)
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeNull() {
-        assumeNull("test", null)
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeNull() {
+    assumeNull("test", null)
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeNull() {
-        assumeNull("test", "")
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNull() {
+    assumeNull("test", "")
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeSame() {
-        val a = Any()
-        assumeSame("test", a, a)
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeSame() {
+    val a = Any()
+    assumeSame("test", a, a)
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeSame() {
-        assumeSame("test", Any(), Any())
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeSame() {
+    assumeSame("test", Any(), Any())
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testTrueAssumeNotSame() {
-        assumeNotSame("test", Any(), Any())
-        assertEquals("", out.toString())
-    }
+  @Test
+  fun testTrueAssumeNotSame() {
+    assumeNotSame("test", Any(), Any())
+    assertEquals("", out.toString())
+  }
 
-    @Test
-    fun testFalseAssumeNotSame() {
-        val a = Any()
-        assumeNotSame("test", a, a)
-        assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
-    }
+  @Test
+  fun testFalseAssumeNotSame() {
+    val a = Any()
+    assumeNotSame("test", a, a)
+    assertTrue(out.toString().startsWith("A/$simpleName: test\ncom.log4k.AssertionError: test"))
+  }
 
-    @Test
-    fun testMultiAssert() {
-        val message = "Assumptions are correct"
-        assumeTrue("test1", true)
-            ?.assumeTrue("test2", true)
-            ?.assumeFalse("test3", false) {
-                out.write(message)
-            }
-        assertEquals(message, out.toString())
-    }
+  @Test
+  fun testMultiAssert() {
+    val message = "Assumptions are correct"
+    assumeTrue("test1", true)
+      ?.assumeTrue("test2", true)
+      ?.assumeFalse("test3", false) {
+        out.write(message)
+      }
+    assertEquals(message, out.toString())
+  }
 }
