@@ -52,9 +52,14 @@ kotlin {
       }
     }
   }
-  ios()
-  watchos()
-  tvos()
+  iosArm32()
+  iosArm64()
+  iosX64()
+  watchosArm32()
+  watchosArm64()
+  watchosX86()
+  tvosArm64()
+  tvosX64()
   macosX64()
   linuxArm64()
   linuxX64()
@@ -103,19 +108,49 @@ kotlin {
       dependsOn(commonMain)
     }
 
-    val iosMain by getting {
+    val iosArm32Main by getting {
       dependencies {
         dependsOn(nativeMain)
       }
     }
 
-    val watchosMain by getting {
+    val iosArm64Main by getting {
       dependencies {
         dependsOn(nativeMain)
       }
     }
 
-    val tvosMain by getting {
+    val iosX64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val watchosArm32Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val watchosArm64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val watchosX86Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val tvosArm64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val tvosX64Main by getting {
       dependencies {
         dependsOn(nativeMain)
       }
