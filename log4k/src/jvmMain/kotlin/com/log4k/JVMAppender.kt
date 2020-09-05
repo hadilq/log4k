@@ -56,16 +56,16 @@ open class JVMAppender(
   /**
    * A lambda function to generate a string to show class name of the log
    */
-  private val generateClassName: (String) -> String = {
-    "${it.substringAfterLast('.')}: "
+  private val generateClassName: (Config) -> String = {
+    "${it.qualifiedName.substringAfterLast('.')}: "
   }
-) : Appender({ level, clazz, event ->
+) : Appender({ level, config, event ->
   when (event) {
     is SimpleEvent -> {
-      writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(clazz)}${event.message}")
+      writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(config)}${event.message}")
     }
     is SimpleThrowableEvent -> {
-      writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(clazz)}${event.message}")
+      writer.println("${generateTimestamp()}${generateLevel(level)}${generateClassName(config)}${event.message}")
       event.throwable.printStackTrace(writer)
     }
   }

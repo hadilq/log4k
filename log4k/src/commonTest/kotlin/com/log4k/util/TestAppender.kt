@@ -7,9 +7,9 @@ import com.log4k.Level
 class TestAppender(
   val box: Box = Box(),
 ) : Appender(
-  logger = { level, clazz, event ->
+  logger = { level, config, event ->
     box.level = level
-    box.clazz = clazz
+    box.clazz = config.qualifiedName
     box.event = event
     box.logged = true
   }

@@ -1,9 +1,6 @@
 package com.log4k.util
 
-import com.log4k.Appender
-import com.log4k.Event
-import com.log4k.Level
-import com.log4k.Log4kI
+import com.log4k.*
 import kotlin.test.assertEquals
 
 class FakeLog4k : Log4kI {
@@ -16,8 +13,8 @@ class FakeLog4k : Log4kI {
 
   override fun remove(appender: Appender) = Unit
 
-  override fun log(p: Level, clazz: String, event: Event) {
-    values.add(LogData(p, clazz, event))
+  override fun log(p: Level, config: Config, event: Event) {
+    values.add(LogData(p, config, event))
   }
 
   fun assertValues(vararg v: LogData) {
@@ -27,6 +24,6 @@ class FakeLog4k : Log4kI {
 
 data class LogData(
   val p: Level,
-  val clazz: String,
+  val config: Config,
   val event: Event
 )

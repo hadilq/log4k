@@ -58,14 +58,16 @@ kotlin {
   macosX64()
   linuxArm64()
   linuxX64()
+  mingwX64()
+  mingwX86()
 
   sourceSets {
-    commonMain {
+    val commonMain by getting {
       dependencies {
       }
     }
 
-    commonTest {
+    val commonTest by getting {
       dependencies {
         implementation(kotlin(KOTLIN_TEST_ANNOTATIONS_COMMON))
       }
@@ -73,6 +75,7 @@ kotlin {
 
     val jvmMain by getting {
       dependencies {
+        implementation(kotlin(KOTLIN_REFLECT))
       }
     }
 
@@ -93,6 +96,58 @@ kotlin {
       dependencies {
         implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
         implementation(JUNIT)
+      }
+    }
+
+    val nativeMain by creating {
+      dependsOn(commonMain)
+    }
+
+    val iosMain by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val watchosMain by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val tvosMain by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val macosX64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val linuxArm64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val linuxX64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val mingwX64Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
+      }
+    }
+
+    val mingwX86Main by getting {
+      dependencies {
+        dependsOn(nativeMain)
       }
     }
   }

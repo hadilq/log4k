@@ -21,7 +21,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-
 class LoggerTest {
 
   private val qualifiedClass = LoggerTest::class.qualifiedName

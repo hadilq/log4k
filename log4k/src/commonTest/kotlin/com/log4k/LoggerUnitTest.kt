@@ -10,84 +10,156 @@ class LoggerUnitTest {
   fun testVerbose() {
     val log4k = FakeLog4k()
     Any().v(ANY_MESSAGE, log4k)
-    log4k.assertValues(LogData(Level.Verbose, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Verbose,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testDebug() {
     val log4k = FakeLog4k()
     Any().d(ANY_MESSAGE, log4k)
-    log4k.assertValues(LogData(Level.Debug, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Debug,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testInfo() {
     val log4k = FakeLog4k()
     Any().i(ANY_MESSAGE, log4k)
-    log4k.assertValues(LogData(Level.Info, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testWarn() {
     val log4k = FakeLog4k()
     Any().w(ANY_MESSAGE, log4k)
-    log4k.assertValues(LogData(Level.Warn, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testError() {
     val log4k = FakeLog4k()
     Any().e(ANY_MESSAGE, log4k)
-    log4k.assertValues(LogData(Level.Error, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Error,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testAssert() {
     val log4k = FakeLog4k()
     Any().a(ANY_MESSAGE, log4k)
-    log4k.assertValues(LogData(Level.Assert, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Assert,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testVerboseOnMessage() {
     val log4k = FakeLog4k()
     Any().run { ANY_MESSAGE.v<Any>(log4k)() }
-    log4k.assertValues(LogData(Level.Verbose, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Verbose,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testDebugOnMessage() {
     val log4k = FakeLog4k()
     Any().run { ANY_MESSAGE.d<Any>(log4k)() }
-    log4k.assertValues(LogData(Level.Debug, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Debug,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testInfoOnMessage() {
     val log4k = FakeLog4k()
     Any().run { ANY_MESSAGE.i<Any>(log4k)() }
-    log4k.assertValues(LogData(Level.Info, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testWarnOnMessage() {
     val log4k = FakeLog4k()
     Any().run { ANY_MESSAGE.w<Any>(log4k)() }
-    log4k.assertValues(LogData(Level.Warn, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testErrorOnMessage() {
     val log4k = FakeLog4k()
     Any().run { ANY_MESSAGE.e<Any>(log4k)() }
-    log4k.assertValues(LogData(Level.Error, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Error,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
   fun testAssertOnMessage() {
     val log4k = FakeLog4k()
     Any().run { ANY_MESSAGE.a<Any>(log4k)() }
-    log4k.assertValues(LogData(Level.Assert, ANY_CLASS, SimpleEvent(ANY_MESSAGE)))
+    log4k.assertValues(
+      LogData(
+        Level.Assert,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
   }
 
   @Test
@@ -98,7 +170,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Verbose,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -112,7 +184,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Debug,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -123,7 +195,13 @@ class LoggerUnitTest {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().i(ANY_MESSAGE, throwable, log4k)
-    log4k.assertValues(LogData(Level.Info, ANY_CLASS, SimpleThrowableEvent(ANY_MESSAGE, throwable)))
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
   }
 
   @Test
@@ -131,7 +209,13 @@ class LoggerUnitTest {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().w(ANY_MESSAGE, throwable, log4k)
-    log4k.assertValues(LogData(Level.Warn, ANY_CLASS, SimpleThrowableEvent(ANY_MESSAGE, throwable)))
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
   }
 
   @Test
@@ -142,7 +226,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Error,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -156,79 +240,91 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Assert,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
   }
 
   @Test
-  fun testVerboseWithThrowableOnMessage() {
+  fun testVerboseWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().run { throwable.v<Any>(ANY_MESSAGE, log4k)() }
     log4k.assertValues(
       LogData(
         Level.Verbose,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
   }
 
   @Test
-  fun testDebugWithThrowableOnMessage() {
+  fun testDebugWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().run { throwable.d<Any>(ANY_MESSAGE, log4k)() }
     log4k.assertValues(
       LogData(
         Level.Debug,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
   }
 
   @Test
-  fun testInfoWithThrowableOnMessage() {
+  fun testInfoWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().run { throwable.i<Any>(ANY_MESSAGE, log4k)() }
-    log4k.assertValues(LogData(Level.Info, ANY_CLASS, SimpleThrowableEvent(ANY_MESSAGE, throwable)))
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
   }
 
   @Test
-  fun testWarnWithThrowableOnMessage() {
+  fun testWarnWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().run { throwable.w<Any>(ANY_MESSAGE, log4k)() }
-    log4k.assertValues(LogData(Level.Warn, ANY_CLASS, SimpleThrowableEvent(ANY_MESSAGE, throwable)))
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(qualifiedName = ANY_CLASS),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
   }
 
   @Test
-  fun testErrorWithThrowableOnMessage() {
+  fun testErrorWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().run { throwable.e<Any>(ANY_MESSAGE, log4k)() }
     log4k.assertValues(
       LogData(
         Level.Error,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
   }
 
   @Test
-  fun testAssertWithThrowableOnMessage() {
+  fun testAssertWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
     Any().run { throwable.a<Any>(ANY_MESSAGE, log4k)() }
     log4k.assertValues(
       LogData(
         Level.Assert,
-        ANY_CLASS,
+        Config(qualifiedName = ANY_CLASS),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )

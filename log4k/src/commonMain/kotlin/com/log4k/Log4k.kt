@@ -41,13 +41,13 @@ interface Log4kI {
    * Log [event]s based on "Basic Selection Rule" and "Match Inheritance Rule" below.
    *
    * Match Inheritance Rule:
-   *   An appender with a defined pattern is enabled if its pattern matches the [clazz] (Full class name) of the log
-   *   request.
+   *   An appender with a defined pattern is enabled if its pattern matches the
+   *   [Config.qualifiedName] (Full class name) of the log request.
    *
    * Basic Selection Rule:
    *   A log request of level [p] in a logger with level q, is enabled if [p] >= q.
    */
-  fun log(p: Level, clazz: String, event: Event)
+  fun log(p: Level, config: Config, event: Event)
 }
 
 
@@ -74,11 +74,12 @@ internal class Log4kImpl : Log4kI {
     }
   }
 
-  override fun log(p: Level, clazz: String, event: Event) {
+  override fun log(p: Level, config: Config, event: Event) {
+    if (!config.enable) return
     appenderSet.forEach {
       val q = it.level
-      if (p.level >= q.level && it.pattern.matches(clazz)) {
-        it.appender.logger(p, clazz, event)
+      if (p.level >= q.level && it.pattern.matches(config.qualifiedName)) {
+        it.appender.logger(p, config, event)
       }
     }
   }

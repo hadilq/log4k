@@ -53,12 +53,12 @@ class AndroidAppender(
   /**
    * A lambda function to generate a string to show class name of the log
    */
-  private val generateClassName: (String) -> String = {
-    "${it.substringAfterLast('.')}: "
+  private val generateClassName: (Config) -> String = {
+    "${it.qualifiedName.substringAfterLast('.')}: "
 
   }
-) : Appender({ level, clazz, event ->
-  val tag = generateClassName(clazz)
+) : Appender({ level, config, event ->
+  val tag = generateClassName(config)
   generateMessage(event)?.let { message ->
     val throwable = generateThrowable(event)
     when (level.level) {
