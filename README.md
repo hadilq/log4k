@@ -33,23 +33,29 @@ services for another review of the method in the future.
 
 Installation
 ---
-Since version 2.0.0 this library is a Kotlin Multiplatform library, so depend on what kind of module you use it in, you can use different artifact IDs. Download it in gradle for your Android app like this
+Since version 2.0.0 this library is a Kotlin Multiplatform library, so depend on what kind of module you use it in, you can use different artifact IDs. Download it in gradle for 
+
+ * `Android` 
 ```groovy
 implementation "com.github.hadilq:log4k-android:${log4kVersion}"
 ```
-For the recent version, check out the Maven Central badges on top of this README file. Use
+ * `JVM`
 ```groovy
 implementation "com.github.hadilq:log4k-jvm:${log4kVersion}"
 ```
-in JVM modules and applications. And finally, use
-
+ * `Javascript`
+```groovy
+implementation "com.github.hadilq:log4k-js:${log4kVersion}"
+```
+ * `Common`
 ```groovy
 implementation "com.github.hadilq:log4k-metadata:${log4kVersion}"
 ```
-in common modules of Kotlin Multiplatform modules and applications. In case of native module, for instance use
+And finally in case of native module, for instance use
 ```groovy
 implementation "com.github.hadilq:log4k-iosArm64:${log4kVersion}"
 ```
+
 But be aware that here we annotated `object Log4k` with `kotlin.native.concurrent.ThreadLocal`, so you may need to apply the next step cofiguration on each thread that you want your logs not be ignored!
 
 Snapshots of the development version are available in [Sonatype's snapshots repository](https://oss.sonatype.org/content/repositories/snapshots).

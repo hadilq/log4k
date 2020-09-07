@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.3.0
+----
+
+_2020-09-07_
+
+ - Move `AndroidAppender` to new package
+ - Add Javasctipt target
+ - Implement logger configuration, so the user of methods has flexible access to the logger behavior
+ - Define new extension functions for `String` and `Throwable`
+
 2.1.0
 -----
 
