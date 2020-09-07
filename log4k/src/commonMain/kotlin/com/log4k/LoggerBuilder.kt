@@ -38,7 +38,7 @@ class LoggerBuilder private constructor(
   /**
    * Log an assertion with a [message].
    */
-  private fun fail(message: String, log4k: Log4kI = Log4k) =
+  private fun fail(message: String, log4k: Log4kI) =
     log4k.log(Assert, config, SimpleThrowableEvent(message, AssertionError(message)))
 
   /**
