@@ -1,7 +1,9 @@
 package com.log4k
 
-actual inline fun <reified T> T.configuration(): Config = Config(
+import kotlin.reflect.KClass
+
+actual fun <T : Any> configuration(clazz: KClass<T>): Config = Config(
   enable = true,
-  qualifiedName = tagName(),
+  qualifiedName = tagName(clazz),
   owners = arrayOf()
 )
