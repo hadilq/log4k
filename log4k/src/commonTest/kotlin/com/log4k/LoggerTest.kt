@@ -23,7 +23,7 @@ import kotlin.test.assertTrue
 
 class LoggerTest {
 
-  private val qualifiedClass = LoggerTest::class.qualifiedName
+  private val qualifiedClass = tagName(this::class)
   private var appender: TestAppender? = null
 
   private fun setup() {

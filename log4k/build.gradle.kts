@@ -52,6 +52,10 @@ kotlin {
       }
     }
   }
+  js {
+    browser()
+    nodejs()
+  }
   ios()
   watchos()
   tvos()
@@ -73,6 +77,17 @@ kotlin {
       }
     }
 
+    val jsMain by getting {
+      dependencies {
+      }
+    }
+
+    val jsTest by getting {
+      dependencies {
+        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS_JS))
+      }
+    }
+
     val jvmMain by getting {
       dependencies {
         implementation(kotlin(KOTLIN_REFLECT))
@@ -81,7 +96,7 @@ kotlin {
 
     val jvmTest by getting {
       dependencies {
-        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
+        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS_JVM))
         implementation(JUNIT)
       }
     }
@@ -94,7 +109,7 @@ kotlin {
 
     val androidTest by getting {
       dependencies {
-        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS))
+        implementation(kotlin(KOTLIN_TEST_ANNOTATIONS_JVM))
         implementation(JUNIT)
       }
     }

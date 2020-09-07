@@ -639,15 +639,8 @@ inline fun <reified T : Any> T.assumeNotSame(
   noinline callback: (() -> Unit)? = null
 ) = LoggerBuilder.create(configuration, log4k).assumeNotSame(message, expected, actual, callback)
 
-fun <T : Any> tagName(clazz: KClass<T>): String = clazz.qualifiedName ?: run {
-  Log4k.log(
-    Error,
-    Config(qualifiedName = "Log4k"),
-    SimpleThrowableEvent("Anonymous class", RuntimeException("Try to log on anonymous class!"))
-  )
-  "Log4k"
-}
-
 inline fun <reified T : Any> T.configuration(): Config = configuration(T::class)
+
+expect fun <T : Any> tagName(clazz: KClass<T>): String
 
 expect fun <T : Any> configuration(clazz: KClass<T>): Config
