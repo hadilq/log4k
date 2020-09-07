@@ -59,7 +59,7 @@ inline fun <reified T> T.a(message: String, log4k: Log4kI = Log4k) =
  * Send a [Verbose] log [String].
  * Example of use:
  * ```
- *    error.v("This is the message")()
+ *    "This is the message".v()()
  * ```
  */
 inline fun <reified T> String.v(log4k: Log4kI = Log4k): T.() -> Unit = {
