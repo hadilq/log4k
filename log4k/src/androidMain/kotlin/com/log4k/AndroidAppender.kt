@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.log4k.android
+package com.log4k
 
 import android.util.Log
-import com.log4k.*
 
 /**
  * An appender to map log4k levels to Android log levels.

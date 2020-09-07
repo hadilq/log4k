@@ -4,7 +4,7 @@ import android.app.Application
 import com.log4k.JVMAppender
 import com.log4k.Level
 import com.log4k.Log4k
-import com.log4k.android.AndroidAppender
+import com.log4k.AndroidAppender
 import java.io.File
 import java.io.PrintWriter
 
