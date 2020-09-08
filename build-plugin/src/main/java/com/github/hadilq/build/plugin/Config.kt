@@ -22,6 +22,7 @@ import org.gradle.api.plugins.JavaBasePlugin
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.bundling.Jar
+import org.gradle.api.tasks.bundling.Zip
 import org.gradle.kotlin.dsl.*
 import org.gradle.plugins.signing.SigningPlugin
 import org.gradle.testing.jacoco.plugins.JacocoPlugin
@@ -89,7 +90,7 @@ fun Project.setupPublication() {
     from(tasks.getByName("dokkaJavadoc"))
   }
 
-  val sourcesJar by tasks.creating(Jar::class) {
+  val sourcesJar by tasks.getting(Zip::class) {
     archiveClassifier.value("sources")
   }
 
