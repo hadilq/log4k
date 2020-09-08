@@ -9,7 +9,7 @@ class TestAppender(
 ) : Appender(
   logger = { level, config, event ->
     box.level = level
-    box.clazz = config.qualifiedName
+    box.clazz = config.tag
     box.event = event
     box.logged = true
   }

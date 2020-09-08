@@ -82,9 +82,10 @@ inline fun <reified T : Any> T.a(
 
 /**
  * Send a [Verbose] log [String].
+ *
  * Example of use:
  * ```
- *    "This is the message".v()
+ *    "This is the message".v<T>()
  * ```
  */
 inline fun <reified T : Any> String.v(
@@ -99,7 +100,7 @@ inline fun <reified T : Any> String.v(
  *
  * Example of use:
  * ```
- *    "This is the message".d()
+ *    "This is the message".d<T>()
  * ```
  */
 inline fun <reified T : Any> String.d(
@@ -114,7 +115,7 @@ inline fun <reified T : Any> String.d(
  *
  * Example of use:
  * ```
- *    "This is the message".i()
+ *    "This is the message".i<T>()
  * ```
  */
 inline fun <reified T : Any> String.i(
@@ -129,7 +130,7 @@ inline fun <reified T : Any> String.i(
  *
  * Example of use:
  * ```
- *    "This is the message".w()
+ *    "This is the message".w<T>()
  * ```
  */
 inline fun <reified T : Any> String.w(
@@ -144,7 +145,7 @@ inline fun <reified T : Any> String.w(
  *
  * Example of use:
  * ```
- *    "This is the message".e()
+ *    "This is the message".e<T>()
  * ```
  */
 inline fun <reified T : Any> String.e(
@@ -159,7 +160,7 @@ inline fun <reified T : Any> String.e(
  *
  * Example of use:
  * ```
- *    "This is the message".a()
+ *    "This is the message".a<T>()
  * ```
  */
 inline fun <reified T : Any> String.a(
@@ -234,7 +235,7 @@ inline fun <reified T : Any> T.a(
  *
  * Example of use:
  * ```
- *    error.v("This is the message")
+ *    error.v<T>("This is the message")
  * ```
  */
 inline fun <reified T : Any> Throwable.v(
@@ -250,7 +251,7 @@ inline fun <reified T : Any> Throwable.v(
  *
  * Example of use:
  * ```
- *    error.d("This is the message")
+ *    error.d<T>("This is the message")
  * ```
  */
 inline fun <reified T : Any> Throwable.d(
@@ -266,7 +267,7 @@ inline fun <reified T : Any> Throwable.d(
  *
  * Example of use:
  * ```
- *    error.i("This is the message")
+ *    error.i<T>("This is the message")
  * ```
  */
 inline fun <reified T : Any> Throwable.i(
@@ -282,7 +283,7 @@ inline fun <reified T : Any> Throwable.i(
  *
  * Example of use:
  * ```
- *    error.w("This is the message")
+ *    error.w<T>("This is the message")
  * ```
  */
 inline fun <reified T : Any> Throwable.w(
@@ -298,7 +299,7 @@ inline fun <reified T : Any> Throwable.w(
  *
  * Example of use:
  * ```
- *    error.e("This is the message")
+ *    error.e<T>("This is the message")
  * ```
  */
 inline fun <reified T : Any> Throwable.e(
@@ -314,7 +315,7 @@ inline fun <reified T : Any> Throwable.e(
  *
  * Example of use:
  * ```
- *    error.a("This is the message")
+ *    error.a<T>("This is the message")
  * ```
  */
 inline fun <reified T : Any> Throwable.a(

@@ -13,6 +13,6 @@ annotation class LoggerConfig(
 
 fun LoggerConfig?.map(clazz: String): Config = Config(
   enable = this?.enable ?: true,
-  qualifiedName = this?.qualifiedName ?: clazz,
+  tag = this?.qualifiedName ?: clazz,
   owners = this?.owners ?: arrayOf()
 )

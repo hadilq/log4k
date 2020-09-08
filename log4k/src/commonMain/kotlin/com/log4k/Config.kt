@@ -2,7 +2,7 @@ package com.log4k
 
 data class Config(
   val enable: Boolean = true,
-  val qualifiedName: String,
+  val tag: String,
   val owners: Array<String> = arrayOf(),
 ) {
 
@@ -13,7 +13,7 @@ data class Config(
     other as Config
 
     if (enable != other.enable) return false
-    if (qualifiedName != other.qualifiedName) return false
+    if (tag != other.tag) return false
     if (!owners.contentEquals(other.owners)) return false
 
     return true
@@ -21,7 +21,7 @@ data class Config(
 
   override fun hashCode(): Int {
     var result = enable.hashCode()
-    result = 31 * result + qualifiedName.hashCode()
+    result = 31 * result + tag.hashCode()
     result = 31 * result + owners.contentHashCode()
     return result
   }

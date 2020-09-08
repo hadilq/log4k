@@ -6,7 +6,7 @@ import kotlin.test.Test
 
 class LoggerUnitTest {
 
-  private val qualifiedName = tagName(Any::class)
+  private val tag = tagName(Any::class)
 
   @Test
   fun testVerbose() {
@@ -15,7 +15,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Verbose,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -28,7 +28,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Debug,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -41,7 +41,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Info,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -54,7 +54,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Warn,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -67,7 +67,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Error,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -80,7 +80,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Assert,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -93,7 +93,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Verbose,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -106,7 +106,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Debug,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -119,7 +119,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Info,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -132,7 +132,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Warn,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -145,7 +145,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Error,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -158,7 +158,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Assert,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleEvent(ANY_MESSAGE)
       )
     )
@@ -172,7 +172,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Verbose,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -186,7 +186,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Debug,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -200,7 +200,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Info,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -214,7 +214,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Warn,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -228,7 +228,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Error,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -242,7 +242,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Assert,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -256,7 +256,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Verbose,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -270,7 +270,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Debug,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -284,7 +284,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Info,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -298,7 +298,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Warn,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -312,7 +312,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Error,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )
@@ -326,7 +326,7 @@ class LoggerUnitTest {
     log4k.assertValues(
       LogData(
         Level.Assert,
-        Config(qualifiedName = qualifiedName),
+        Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
       )
     )

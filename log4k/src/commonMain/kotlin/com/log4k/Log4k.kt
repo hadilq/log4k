@@ -42,7 +42,7 @@ interface Log4kI {
    *
    * Match Inheritance Rule:
    *   An appender with a defined pattern is enabled if its pattern matches the
-   *   [Config.qualifiedName] (Full class name) of the log request.
+   *   [Config.tag] (Full class name) of the log request.
    *
    * Basic Selection Rule:
    *   A log request of level [p] in a logger with level q, is enabled if [p] >= q.
@@ -78,7 +78,7 @@ internal class Log4kImpl : Log4kI {
     if (!config.enable) return
     appenderSet.forEach {
       val q = it.level
-      if (p.level >= q.level && it.pattern.matches(config.qualifiedName)) {
+      if (p.level >= q.level && it.pattern.matches(config.tag)) {
         it.appender.logger(p, config, event)
       }
     }
