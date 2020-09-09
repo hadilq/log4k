@@ -16,8 +16,8 @@
 import com.github.hadilq.build.plugin.*
 
 plugins {
-  id("com.android.library")
   id("kotlin-multiplatform")
+  id("com.android.library")
   id("com.github.hadilq.build-plugin")
 }
 
