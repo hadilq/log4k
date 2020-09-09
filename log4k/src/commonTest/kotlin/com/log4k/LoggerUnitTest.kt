@@ -87,6 +87,84 @@ class LoggerUnitTest {
   }
 
   @Test
+  fun testVerboseOnMessageFun() {
+    val log4k = FakeLog4k()
+    Any().run { ANY_MESSAGE.(v(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Verbose,
+        Config(tag = tag),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
+  }
+
+  @Test
+  fun testDebugOnMessageFun() {
+    val log4k = FakeLog4k()
+    Any().run { ANY_MESSAGE.(d(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Debug,
+        Config(tag = tag),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
+  }
+
+  @Test
+  fun testInfoOnMessageFun() {
+    val log4k = FakeLog4k()
+    Any().run { ANY_MESSAGE.(i(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(tag = tag),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
+  }
+
+  @Test
+  fun testWarnOnMessageFun() {
+    val log4k = FakeLog4k()
+    Any().run { ANY_MESSAGE.(w(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(tag = tag),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
+  }
+
+  @Test
+  fun testErrorOnMessageFun() {
+    val log4k = FakeLog4k()
+    Any().run { ANY_MESSAGE.(e(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Error,
+        Config(tag = tag),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
+  }
+
+  @Test
+  fun testAssertOnMessageFun() {
+    val log4k = FakeLog4k()
+    Any().run { ANY_MESSAGE.(a(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Assert,
+        Config(tag = tag),
+        SimpleEvent(ANY_MESSAGE)
+      )
+    )
+  }
+
+  @Test
   fun testVerboseOnMessage() {
     val log4k = FakeLog4k()
     ANY_MESSAGE.v<Any>(log4k = log4k)

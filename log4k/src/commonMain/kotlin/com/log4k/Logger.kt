@@ -85,6 +85,96 @@ inline fun <reified T : Any> T.a(
  *
  * Example of use:
  * ```
+ *    "This is the message".(v())()
+ * ```
+ */
+inline fun <reified T : Any> T.v(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Verbose, config, SimpleEvent(this))
+}
+
+/**
+ * Send a [Debug] log [String].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(d())()
+ * ```
+ */
+inline fun <reified T : Any> T.d(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Debug, config, SimpleEvent(this))
+}
+
+/**
+ * Send a [Info] log [String].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(i())()
+ * ```
+ */
+inline fun <reified T : Any> T.i(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Info, config, SimpleEvent(this))
+}
+
+/**
+ * Send a [Warn] log [String].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(w())()
+ * ```
+ */
+inline fun <reified T : Any> T.w(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Warn, config, SimpleEvent(this))
+}
+
+/**
+ * Send a [Error] log [String].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(e())()
+ * ```
+ */
+inline fun <reified T : Any> T.e(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Error, config, SimpleEvent(this))
+}
+
+/**
+ * Send a [Assert] log [String].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(a())()
+ * ```
+ */
+inline fun <reified T : Any> T.a(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Assert, config, SimpleEvent(this))
+}
+
+/**
+ * Send a [Verbose] log [String].
+ *
+ * Example of use:
+ * ```
  *    "This is the message".v<T>()
  * ```
  */
