@@ -72,9 +72,12 @@ if (BuildConfig.DEBUG) {
 ```
 As you see, you can use any kind of appender to handle different kinds of logs. For instance, the `AndroidAppender`
 appender log as an ordinary Android `Log`. Or the `DefaultAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt")))`
-appender log into a file in external cache directory.
+appender log into a file in external cache directory. And done!
 
-And done! By the way, after this step you can use other features of this library. For instance, you can use `com.log4k.LoggerConfig` annotation in Android and JVM modules like this
+More Usage
+---
+
+By the way, after installation you can use other features of this library. For instance, you can use `com.log4k.LoggerConfig` annotation in Android and JVM modules like this
 ```kotlin
 @LoggerConfig(tag = "Here change the tag from the `qualifiedName` of `Example` class to any other `String`, if you need!")
 class Example {
