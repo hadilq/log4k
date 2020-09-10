@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.3.1
+----
+
+_2020-09-10_
+
+ - Add new methods such as
+  + `"This is the message".(v())()`
+  + `"This is the message".(v(error))()`
+  + `EventImpl().(v())()`
+
 2.3.0
 ----
 
