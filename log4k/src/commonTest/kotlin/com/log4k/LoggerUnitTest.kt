@@ -327,6 +327,91 @@ class LoggerUnitTest {
   }
 
   @Test
+  fun testVerboseWithThrowableOnMessageFun() {
+    val log4k = FakeLog4k()
+    val throwable = RuntimeException(ANY_MESSAGE)
+    Any().run { ANY_MESSAGE.(v(throwable, log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Verbose,
+        Config(tag = tag),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+  @Test
+  fun testDebugWithThrowableOnMessageFun() {
+    val log4k = FakeLog4k()
+    val throwable = RuntimeException(ANY_MESSAGE)
+    Any().run { ANY_MESSAGE.(d(throwable, log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Debug,
+        Config(tag = tag),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+  @Test
+  fun testInfoWithThrowableOnMessageFun() {
+    val log4k = FakeLog4k()
+    val throwable = RuntimeException(ANY_MESSAGE)
+    Any().run { ANY_MESSAGE.(i(throwable, log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(tag = tag),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+  @Test
+  fun testWarnWithThrowableOnMessageFun() {
+    val log4k = FakeLog4k()
+    val throwable = RuntimeException(ANY_MESSAGE)
+    Any().run { ANY_MESSAGE.(w(throwable, log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(tag = tag),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+  @Test
+  fun testErrorWithThrowableOnMessageFun() {
+    val log4k = FakeLog4k()
+    val throwable = RuntimeException(ANY_MESSAGE)
+    Any().run { ANY_MESSAGE.(e(throwable, log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Error,
+        Config(tag = tag),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+  @Test
+  fun testAssertWithThrowableOnMessageFun() {
+    val log4k = FakeLog4k()
+    val throwable = RuntimeException(ANY_MESSAGE)
+    Any().run { ANY_MESSAGE.(a(throwable, log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Assert,
+        Config(tag = tag),
+        SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+
+  @Test
   fun testVerboseWithThrowableOnThrowable() {
     val log4k = FakeLog4k()
     val throwable = RuntimeException(ANY_MESSAGE)
@@ -406,6 +491,174 @@ class LoggerUnitTest {
         Level.Assert,
         Config(tag = tag),
         SimpleThrowableEvent(ANY_MESSAGE, throwable)
+      )
+    )
+  }
+
+  @Test
+  fun testVerboseOnEvent() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    event.v<Any>(log4k = log4k)
+    log4k.assertValues(
+      LogData(
+        Level.Verbose,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testDebugOnEvent() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    event.d<Any>(log4k = log4k)
+    log4k.assertValues(
+      LogData(
+        Level.Debug,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testInfoOnEvent() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    event.i<Any>(log4k = log4k)
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testWarnOnEvent() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    event.w<Any>(log4k = log4k)
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testErrorOnEvent() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    event.e<Any>(log4k = log4k)
+    log4k.assertValues(
+      LogData(
+        Level.Error,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testAssertOnEvent() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    event.a<Any>(log4k = log4k)
+    log4k.assertValues(
+      LogData(
+        Level.Assert,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testVerboseOnEventFun() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    Any().run { event.(ve(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Verbose,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testDebugOnEventFun() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    Any().run { event.(de(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Debug,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testInfoOnEventFun() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    Any().run { event.(ie(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Info,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testWarnOnEventFun() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    Any().run { event.(we(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Warn,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testErrorOnEventFun() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    Any().run { event.(ee(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Error,
+        Config(tag = tag),
+        event
+      )
+    )
+  }
+
+  @Test
+  fun testAssertOnEventFun() {
+    val log4k = FakeLog4k()
+    val event = SimpleThrowableEvent(ANY_MESSAGE, RuntimeException(ANY_MESSAGE))
+    Any().run { event.(ae(log4k = log4k))() }
+    log4k.assertValues(
+      LogData(
+        Level.Assert,
+        Config(tag = tag),
+        event
       )
     )
   }

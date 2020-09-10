@@ -321,6 +321,102 @@ inline fun <reified T : Any> T.a(
   log4k.log(Assert, config, SimpleThrowableEvent(message, throwable))
 
 /**
+ * Send a [Verbose] log [String] and [Throwable].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(v(error))()
+ * ```
+ */
+inline fun <reified T : Any> T.v(
+  throwable: Throwable,
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Verbose, config, SimpleThrowableEvent(this, throwable))
+}
+
+/**
+ * Send a [Debug] log [String] and [Throwable].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(d(error))()
+ * ```
+ */
+inline fun <reified T : Any> T.d(
+  throwable: Throwable,
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Debug, config, SimpleThrowableEvent(this, throwable))
+}
+
+/**
+ * Send a [Info] log [String] and [Throwable].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(i(error))()
+ * ```
+ */
+inline fun <reified T : Any> T.i(
+  throwable: Throwable,
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Info, config, SimpleThrowableEvent(this, throwable))
+}
+
+/**
+ * Send a [Warn] log [String] and [Throwable].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(w(error))()
+ * ```
+ */
+inline fun <reified T : Any> T.w(
+  throwable: Throwable,
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Warn, config, SimpleThrowableEvent(this, throwable))
+}
+
+/**
+ * Send a [Error] log [String] and [Throwable].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(e(error))()
+ * ```
+ */
+inline fun <reified T : Any> T.e(
+  throwable: Throwable,
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Error, config, SimpleThrowableEvent(this, throwable))
+}
+
+/**
+ * Send a [Assert] log [String] and [Throwable].
+ *
+ * Example of use:
+ * ```
+ *    "This is the message".(a(error))()
+ * ```
+ */
+inline fun <reified T : Any> T.a(
+  throwable: Throwable,
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): String.() -> Unit = {
+  log4k.log(Assert, config, SimpleThrowableEvent(this, throwable))
+}
+
+/**
  * Send a [Verbose] log [message] and [Throwable].
  *
  * Example of use:
@@ -481,7 +577,98 @@ inline fun <reified T : Any> T.a(
  *
  * Example of use:
  * ```
- *    EventImpl().v()
+ *    EventImpl().(v())()
+ * ```
+ */
+inline fun <reified T : Any> T.ve(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): Event.() -> Unit = {
+  log4k.log(Verbose, config, this)
+}
+
+
+/**
+ * Send a [Debug] log [Event].
+ *
+ * Example of use:
+ * ```
+ *    EventImpl().(d())()
+ * ```
+ */
+inline fun <reified T : Any> T.de(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): Event.() -> Unit = {
+  log4k.log(Debug, config, this)
+}
+
+/**
+ * Send an [Info] log [Event].
+ *
+ * Example of use:
+ * ```
+ *    EventImpl().(i())()
+ * ```
+ */
+inline fun <reified T : Any> T.ie(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): Event.() -> Unit = {
+  log4k.log(Info, config, this)
+}
+
+/**
+ * Send a [Warn] log [Event].
+ *
+ * Example of use:
+ * ```
+ *    EventImpl().(w())()
+ * ```
+ */
+inline fun <reified T : Any> T.we(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): Event.() -> Unit = {
+  log4k.log(Warn, config, this)
+}
+
+/**
+ * Send an [Error] log [Event].
+ *
+ * Example of use:
+ * ```
+ *    EventImpl().(ee())()
+ * ```
+ */
+inline fun <reified T : Any> T.ee(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): Event.() -> Unit = {
+  log4k.log(Error, config, this)
+}
+
+/**
+ * Send an [Assert] log [Event].
+ *
+ * Example of use:
+ * ```
+ *    EventImpl().(ae())()
+ * ```
+ */
+inline fun <reified T : Any> T.ae(
+  config: Config = configuration(T::class),
+  log4k: Log4kI = Log4k
+): Event.() -> Unit = {
+  log4k.log(Assert, config, this)
+}
+
+/**
+ * Send a [Verbose] log [Event].
+ *
+ * Example of use:
+ * ```
+ *    EventImpl().v<T>()
  * ```
  */
 inline fun <reified T : Any> Event.v(
@@ -497,7 +684,7 @@ inline fun <reified T : Any> Event.v(
  *
  * Example of use:
  * ```
- *    EventImpl().d()
+ *    EventImpl().d<T>()
  * ```
  */
 inline fun <reified T : Any> Event.d(
@@ -512,7 +699,7 @@ inline fun <reified T : Any> Event.d(
  *
  * Example of use:
  * ```
- *    EventImpl().i()
+ *    EventImpl().i<T>()
  * ```
  */
 inline fun <reified T : Any> Event.i(
@@ -527,7 +714,7 @@ inline fun <reified T : Any> Event.i(
  *
  * Example of use:
  * ```
- *    EventImpl().w()
+ *    EventImpl().w<T>()
  * ```
  */
 inline fun <reified T : Any> Event.w(
@@ -542,7 +729,7 @@ inline fun <reified T : Any> Event.w(
  *
  * Example of use:
  * ```
- *    EventImpl().e()
+ *    EventImpl().e<T>()
  * ```
  */
 inline fun <reified T : Any> Event.e(
@@ -557,7 +744,7 @@ inline fun <reified T : Any> Event.e(
  *
  * Example of use:
  * ```
- *    EventImpl().a()
+ *    EventImpl().a<T>()
  * ```
  */
 inline fun <reified T : Any> Event.a(
