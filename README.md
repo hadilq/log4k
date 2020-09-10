@@ -60,7 +60,7 @@ But be aware that here we annotated `object Log4k` with `kotlin.native.concurren
 
 Snapshots of the development version are available in [Sonatype's snapshots repository](https://oss.sonatype.org/content/repositories/snapshots).
 
-Then in the `onCreate` method of your `Application` class setup it like this
+In the next step, we need to implement the visitors(in visitor design pattern sense), so for instance in Android apps, inside the `onCreate` method of your `Application` class setup it like this
 ```kotlin
 if (BuildConfig.DEBUG) {
     Log4k.add(Level.Verbose, ".*", AndroidAppender())
@@ -70,9 +70,36 @@ if (BuildConfig.DEBUG) {
     Log4k.add(Level.Assert, "com\\.log4k\\.sample\\..+", DefaultAppender(writer = PrintWriter(File(filesDir, "log.txt"))))
 }
 ```
-As you can see, you can use any kind of appender to handle different kinds of logs. For instance, the `AndroidAppender`
+As you see, you can use any kind of appender to handle different kinds of logs. For instance, the `AndroidAppender`
 appender log as an ordinary Android `Log`. Or the `DefaultAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt")))`
 appender log into a file in external cache directory.
+
+And done! By the way, after this step you can use other features of this library. For instance, you can use `com.log4k.LoggerConfig` annotation in Android and JVM modules like this
+```kotlin
+@LoggerConfig(tag = "Here change the tag from the `qualifiedName` of `Example` class to any other `String`, if you need!")
+class Example {
+  fun someMethod() {
+    d("Reached here!")
+    "Some message!".i()
+
+    SomeCustomeEventForTrackingInFirebase().(v())()
+  }
+}
+```
+where `LoggerConfig` defined as following.
+```kotlin
+annotation class LoggerConfig(
+  val enable: Boolean = true,
+  val tag: String = "",
+  val owners: Array<String> = [],
+)
+```
+so you can disable all logs of the `Example` class all together by setting `enable = false`. Or you can use this 
+annotation to clarify who are the owners of this class.
+
+As you find out in the above example there are different styles for logger methods, where I'm looking to find out which
+one is working best for the users, so your feedback is welcome.
+
 
 Contribution
 ---
