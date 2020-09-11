@@ -64,14 +64,14 @@ In the next step, we need to implement the visitors(in visitor design pattern se
 ```kotlin
 if (BuildConfig.DEBUG) {
     Log4k.add(Level.Verbose, ".*", AndroidAppender())
-    Log4k.add(Level.Verbose, "com\\.log4k\\.sample\\..+", DefaultAppender())
-    Log4k.add(Level.Verbose, ".*", DefaultAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt"))))
+    Log4k.add(Level.Verbose, "com\\.log4k\\.sample\\..+", JVMAppender())
+    Log4k.add(Level.Verbose, ".*", JVMAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt"))))
 } else {
-    Log4k.add(Level.Assert, "com\\.log4k\\.sample\\..+", DefaultAppender(writer = PrintWriter(File(filesDir, "log.txt"))))
+    Log4k.add(Level.Assert, "com\\.log4k\\.sample\\..+", JVMAppender(writer = PrintWriter(File(filesDir, "log.txt"))))
 }
 ```
 As you see, you can use any kind of appender to handle different kinds of logs. For instance, the `AndroidAppender`
-appender log as an ordinary Android `Log`. Or the `DefaultAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt")))`
+appender log as an ordinary Android `Log`. Or the `JVMAppender(writer = PrintWriter(File(externalCacheDir, "debug-log.txt")))`
 appender log into a file in external cache directory. And done!
 
 More Usage
