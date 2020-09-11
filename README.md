@@ -79,13 +79,27 @@ More Usage
 
 By the way, after installation you can use other features of this library. For instance, you can use `com.log4k.LoggerConfig` annotation in Android and JVM modules like this
 ```kotlin
-@LoggerConfig(tag = "Here change the tag from the `qualifiedName` of `Example` class to any other `String`, if you need!")
+@LoggerConfig(tag = "Here, if you need, can change the tag from the `qualifiedName` of `Example` class to any other `String`")
 class Example {
   fun someMethod() {
-    d("Reached here!")
-    "Some message!".i()
+    d("Reached here!") // Debug level
 
-    SomeCustomeEventForTrackingInFirebase().(v())()
+    try {
+      ...
+    } catch(error: Throwbale) {
+      e("Message", error) // Error level
+    }
+    ...
+    object : Comparable<Float> {
+      override fun compareTo(other: Float): Int {
+        // This is an anonymous class so using `d("Message")`
+        // would not capture `LoggerConfig` config. 
+        // Instead we can use
+        "Message".i<Example>() // Info level
+      }
+    }
+    ...
+    SomeCustomeEventForTrackingInFirebase().(v())() // Verbose level
   }
 }
 ```
