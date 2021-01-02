@@ -1,8 +1,8 @@
 name: PR Health Check
 on:
   push:
-    branches:
-      - !main
+    branches-ignore:
+      - master
 
   workflow_dispatch:
     inputs:
